@@ -159,7 +159,7 @@ void BgBombwall_Init(Actor* pthisx, GlobalContext* globalCtx)
 		func_8086ED50(pthis, globalCtx);
 	}
 
-	osSyncPrintf("(field keep 汎用爆弾壁)(arg_data 0x%04x)(angY %d)\n", pthis->dyna.actor.params, pthis->dyna.actor.shape.rot.y);
+	osSyncPrintf("(field keep 汎用爆弾壁)(arg_data 0x%04x)(angY %d)\n", pthis->dyna.actor.params, (int)pthis->dyna.actor.shape.rot.y);
 }
 
 void BgBombwall_DestroyCollision(BgBombwall* pthis, GlobalContext* globalCtx)

@@ -73,7 +73,7 @@ void EnOkarinaTag_Init(Actor* thisx, GlobalContext* globalCtx)
 	// "Correct answer information"
 	osSyncPrintf(VT_FGCOL(PURPLE) "☆☆☆☆☆ 正解情報\t ☆☆☆☆☆ %d\n" VT_RST, pthis->ocarinaSong);
 	// "Range information"
-	osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 範囲情報\t ☆☆☆☆☆ %d\n" VT_RST, pthis->actor.world.rot.z);
+	osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 範囲情報\t ☆☆☆☆☆ %d\n" VT_RST, (int)pthis->actor.world.rot.z);
 	// "Processing range information"
 	osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 処理範囲情報\t ☆☆☆☆☆ %f\n" VT_RST, pthis->interactRange);
 	// "Hit?"

@@ -958,7 +958,7 @@ struct AudioTableDef
 	/* 0x02 */ s16 unkMediumParam;
 	/* 0x04 */ uintptr_t romAddr;
 	/* 0x08 */ char pad[0x8];
-	/* 0x10 */ AudioTableEntry entries[]; // (dynamic size)
+	/* 0x10 */ AudioTableEntry entries[0x100]; // (dynamic size)
 };					      // size >= 0x20
 
 struct AudioTask

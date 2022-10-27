@@ -1,9 +1,9 @@
 #define INTERNAL_SRC_CODE_AUDIO_LOAD_C
 #include "global.h"
 #include <string.h>
-#include "audio/bank.h"
-#include "audio/seq.h"
-#include "audio/table.h"
+#include "assets/EUR_MQD/audio/bank.h"
+#include "assets/EUR_MQD/audio/seq.h"
+#include "assets/EUR_MQD/audio/table.h"
 #include "segment_symbols.h"
 #include "ultra64.h"
 #include "z64audio.h"
@@ -62,14 +62,14 @@ void AudioLoad_ProcessAsyncLoad(AudioAsyncLoad* asyncLoad, s32 resetStatus);
 void AudioLoad_RelocateFontAndPreloadSamples(s32 fontId, SoundFontData* mem, RelocInfo* relocInfo, s32 temporary);
 void AudioLoad_RelocateSample(SoundFontSound* sound, SoundFontData* mem, RelocInfo* relocInfo);
 void AudioLoad_DiscardFont(s32 fontId);
-u32 AudioLoad_TrySyncLoadSampleBank(u32 sampleBankId, u32* outMedium, s32 noLoad);
+static u32 AudioLoad_TrySyncLoadSampleBank(u32 sampleBankId, u32* outMedium, s32 noLoad);
 void* AudioLoad_SyncLoad(u32 tableType, u32 tableId, s32* didAllocate);
 u32 AudioLoad_GetRealTableIndex(s32 tableType, u32 tableId);
 void* AudioLoad_SearchCaches(s32 tableType, s32 id);
 AudioTable* AudioLoad_GetLoadTable(s32 tableType);
-void AudioLoad_SyncDma(Pointer devAddr, Pointer addr, size_t size, s32 medium);
-void AudioLoad_SyncDmaUnkMedium(Pointer devAddr, Pointer addr, size_t size, s32 unkMediumParam);
-s32 AudioLoad_Dma(OSIoMesg* mesg, u32 priority, s32 direction, Pointer devAddr, Pointer ramAddr, size_t size, OSMesgQueue* reqQueue, s32 medium, const char* dmaFuncType);
+static void AudioLoad_SyncDma(Pointer devAddr, Pointer addr, size_t size, s32 medium);
+static void AudioLoad_SyncDmaUnkMedium(Pointer devAddr, Pointer addr, size_t size, s32 unkMediumParam);
+static s32 AudioLoad_Dma(OSIoMesg* mesg, u32 priority, s32 direction, Pointer devAddr, Pointer ramAddr, size_t size, OSMesgQueue* reqQueue, s32 medium, const char* dmaFuncType);
 void* AudioLoad_AsyncLoadInner(s32 tableType, s32 id, s32 nChunks, s32 retData, OSMesgQueue* retQueue);
 AudioAsyncLoad* AudioLoad_StartAsyncLoadUnkMedium(s32 unkMediumParam, u32 devAddr, void* ramAddr, s32 size, s32 medium, s32 nChunks, OSMesgQueue* retQueue, s32 retMsg);
 AudioAsyncLoad* AudioLoad_StartAsyncLoad(u32 devAddr, void* ramAddr, u32 size, s32 medium, s32 nChunks, OSMesgQueue* retQueue, s32 retMsg);
@@ -79,7 +79,7 @@ u8* AudioLoad_SyncLoadSeq(s32 seqId);
 s32 AudioLoad_ProcessSamplePreloads(s32 resetStatus);
 void AudioLoad_DmaSlowCopy(AudioSlowLoad* slowLoad, s32 size);
 void AudioLoad_ProcessSlowLoads(s32 resetStatus);
-void AudioLoad_DmaSlowCopyUnkMedium(Pointer devAddr, Pointer ramAddr, size_t size, s32 arg3);
+static void AudioLoad_DmaSlowCopyUnkMedium(Pointer devAddr, Pointer ramAddr, size_t size, s32 arg3);
 
 OSMesgQueue sScriptLoadQueue;
 OSMesg sScriptLoadMesgBuf[0x10];

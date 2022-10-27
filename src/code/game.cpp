@@ -549,7 +549,7 @@ namespace oot::gamestate
 		Rumble_Reset();
 		// osSendMesg(&gameState->gfxCtx->queue, NULL, OS_MESG_BLOCK);
 
-		Fault_AddClient(&sGameFaultClient, GameState_FaultPrint, NULL, NULL);
+		Fault_AddClient(&sGameFaultClient, (void*)GameState_FaultPrint, NULL, NULL);
 
 		osSyncPrintf("game constructor end\n"); // "game constructor end"
 	}

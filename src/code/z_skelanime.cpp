@@ -25,9 +25,9 @@
 
 s32 LinkAnimation_Loop(GlobalContext* globalCtx, SkelAnime* skelAnime);
 s32 LinkAnimation_Once(GlobalContext* globalCtx, SkelAnime* skelAnime);
-s32 SkelAnime_LoopFull(GlobalContext* globalCtx, SkelAnime* skelAnime);
-s32 SkelAnime_Once(GlobalContext* globalCtx, SkelAnime* skelAnime);
-s32 SkelAnime_LoopPartial(GlobalContext* globalCtx, SkelAnime* skelAnime);
+static s32 SkelAnime_LoopFull(GlobalContext* globalCtx, SkelAnime* skelAnime);
+static s32 SkelAnime_Once(GlobalContext* globalCtx, SkelAnime* skelAnime);
+static s32 SkelAnime_LoopPartial(GlobalContext* globalCtx, SkelAnime* skelAnime);
 
 void SkelAnime_CopyFrameTable(SkelAnime* skelAnime, Vec3s* dst, Vec3s* src);
 

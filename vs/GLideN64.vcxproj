@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_mupenplus|ARM">
+      <Configuration>Debug_mupenplus</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug_mupenplus|Win32">
       <Configuration>Debug_mupenplus</Configuration>
       <Platform>Win32</Platform>
@@ -8,6 +12,10 @@
     <ProjectConfiguration Include="Debug_mupenplus|x64">
       <Configuration>Debug_mupenplus</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_mupenplus|ARM">
+      <Configuration>Release_mupenplus</Configuration>
+      <Platform>ARM</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release_mupenplus|Win32">
       <Configuration>Release_mupenplus</Configuration>
@@ -21,6 +29,15 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{37D31D7F-C4E7-45B0-AEF6-D6824A243CF7}</ProjectGuid>
     <RootNamespace>GLideN64</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ApplicationType>Android</ApplicationType>
+    <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
+    <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(WindowsTargetPlatformVersion)'=='' and '$(VisualStudioVersion)' != '12.0' and '$(VisualStudioVersion)' != '14.0'">
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
@@ -50,18 +67,34 @@
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug_mupenplus'">
-    <TargetName>GLideN64d</TargetName>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release_mupenplus'">
-    <TargetName>GLideN64</TargetName>
     <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32' or '$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">
+    <TargetName>GLideN64d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32' or '$(Configuration)|$(Platform)'=='Release_mupenplus|x64'">
+    <TargetName>GLideN64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">
+    <TargetName>libGLideN64d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">
+    <TargetName>libGLideN64</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">
-    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../FreeType2/freetype2-android/include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/freetype2-android/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
@@ -72,12 +105,12 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>../../src;../../src/inc;../../src/osal;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>UNICODE;_USRDLL;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;TXFILTER_LIB;OS_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNICODE;TXFILTER_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <ExceptionHandling>Async</ExceptionHandling>
+      <ExceptionHandling>Enabled</ExceptionHandling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -89,6 +122,16 @@
     <PreBuildEvent>
       <Command>call ..\GLideN64\src\getRevision.bat</Command>
     </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32' Or '$(Platform)'=='x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_USRDLL;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;OS_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM'">
+    <ClCompile>
+      <PreprocessorDefinitions>OS_LINUX;OS_ANDROID;EGL;USE_SDL2_INCLUDE_PATH_SHORT;EGL_EGLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release_mupenplus'">
     <ClCompile>
@@ -170,12 +213,16 @@
       <Message>Copy result to plugins folder</Message>
       <Command Condition="'$(Platform)'=='Win32'">if NOT "$(PJ64PluginsDirQT)" == "" (if not exist "$(PJ64PluginsDirQT)" mkdir "$(PJ64PluginsDirQT)"
 copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirQT)")</Command>
+      <Command Condition="'$(Platform)'=='ARM'">if NOT "$(PJ64PluginsDirQT)" == "" (if not exist "$(PJ64PluginsDirQT)" mkdir "$(PJ64PluginsDirQT)"
+copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirQT)")</Command>
       <Command Condition="'$(Platform)'=='x64'">if NOT "$(PJ64PluginsDirQT_x64)" == "" (if not exist "$(PJ64PluginsDirQT_x64)" mkdir "$(PJ64PluginsDirQT_x64)"
 copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirQT_x64)")</Command>
     </PostBuildEvent>
     <PostBuildEvent Condition="'$(Configuration)'=='Debug_wtl' Or '$(Configuration)'=='Release_wtl'">
       <Message>Copy result to plugins folder</Message>
       <Command Condition="'$(Platform)'=='Win32'">if NOT "$(PJ64PluginsDirWTL)" == "" (if not exist "$(PJ64PluginsDirWTL)" mkdir "$(PJ64PluginsDirWTL)"
+copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirWTL)")</Command>
+      <Command Condition="'$(Platform)'=='ARM'">if NOT "$(PJ64PluginsDirWTL)" == "" (if not exist "$(PJ64PluginsDirWTL)" mkdir "$(PJ64PluginsDirWTL)"
 copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirWTL)")</Command>
       <Command Condition="'$(Platform)'=='x64'">if NOT "$(PJ64PluginsDirWTL_x64)" == "" (if not exist "$(PJ64PluginsDirWTL_x64)" mkdir "$(PJ64PluginsDirWTL_x64)"
 copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirWTL_x64)")</Command>
@@ -189,6 +236,8 @@ copy /Y "$(OutDir)$(TargetName).*" "$(PJ64PluginsDirWTL_x64)")</Command>
       <Message>Copy result to plugins folder</Message>
       <Command Condition="'$(Platform)'=='Win32'">if NOT "$(Mupen64PluginsDir)" == "" (if not exist "$(Mupen64PluginsDir)" mkdir "$(Mupen64PluginsDir)"
 copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir)")</Command>
+      <Command Condition="'$(Platform)'=='ARM'">if NOT "$(Mupen64PluginsDir)" == "" (if not exist "$(Mupen64PluginsDir)" mkdir "$(Mupen64PluginsDir)"
+copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir)")</Command>
       <Command Condition="'$(Platform)'=='x64'">if NOT "$(Mupen64PluginsDir_x64)" == "" (if not exist "$(Mupen64PluginsDir_x64)" mkdir "$(Mupen64PluginsDir_x64)"
 copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     </PostBuildEvent>
@@ -197,16 +246,23 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">true</ConformanceMode>
+      <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">true</ConformanceMode>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">stdcpp17</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">stdcpp17</LanguageStandard>
       <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">true</ConformanceMode>
+      <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">true</ConformanceMode>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">stdcpp17</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">stdcpp17</LanguageStandard>
       <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">true</ConformanceMode>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">stdcpp17</LanguageStandard>
       <ConformanceMode Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|x64'">true</ConformanceMode>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|x64'">stdcpp17</LanguageStandard>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">MultiThreadedDebug</RuntimeLibrary>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">Disabled</Optimization>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">Disabled</Optimization>
+      <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">c++1z</CppLanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -271,19 +327,38 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\opengl_Command.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\opengl_ObjectPool.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\RingBufferPool.cpp" />
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\windows\windows_DisplayWindow.cpp">
+    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\windows\windows_DisplayWindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.cpp">
+    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\linux\windows_DisplayWindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\GLideN64\src\gSP.cpp" />
     <ClCompile Include="..\GLideN64\src\iob.cpp">
       <ExcludedFromBuild Condition="'$(Platform)'=='Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Platform)'=='ARM'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\GLideN64\src\Log.cpp" />
     <ClCompile Include="..\GLideN64\src\N64.cpp" />
@@ -302,8 +377,11 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile Include="..\GLideN64\src\RSP.cpp" />
     <ClCompile Include="..\GLideN64\src\RSP_LoadMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Platform)'=='Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Platform)'=='ARM'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\GLideN64\src\SoftwareRender.cpp" />
     <ClCompile Include="..\GLideN64\src\TexrectDrawer.cpp" />
@@ -336,11 +414,29 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile Include="..\GLideN64\src\uCodes\ZSort.cpp" />
     <ClCompile Include="..\GLideN64\src\uCodes\ZSortBOSS.cpp" />
     <ClCompile Include="..\GLideN64\src\VI.cpp" />
+    <ClCompile Include="..\GLideN64\src\ZlutTexture.cpp" />
+    <ClCompile Include="..\GLideN64\src\windows\ScreenShot.cpp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='Win32' or '$(Platform)' == 'Win32'">
     <ClCompile Include="..\GLideN64\src\windows\CommonAPIImpl_windows.cpp" />
     <ClCompile Include="..\GLideN64\src\windows\GLideN64_windows.cpp" />
     <ClCompile Include="..\GLideN64\src\windows\MemoryStatus_windows.cpp" />
-    <ClCompile Include="..\GLideN64\src\windows\ScreenShot.cpp" />
-    <ClCompile Include="..\GLideN64\src\ZlutTexture.cpp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='ARM'">
+    <ClCompile Include="..\GLideN64\src\linux\CommonAPIImpl_linux.cpp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='ARM'">
+    <ClCompile Include="..\GLideN64\src\native\util\path.cpp" />
+    <ClCompile Include="..\GLideN64\src\native\util\StdString.cpp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='ARM'">
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\linux\windows_DisplayWindow.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PublicApi\android_hardware_buffer_compat.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PrivateApi\GraphicBuffer.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PrivateApi\libhardware.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\GraphicBufferWrapper.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\opengl_ColorBufferReaderWithEGLImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\GLideN64\src\3DMath.h" />
@@ -411,7 +507,10 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\opengl_ObjectPool.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\readerwriterqueue.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\ThreadedOpenGl\RingBufferPool.h" />
-    <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.h">
+    <ClInclude Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.h">
+      <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Condition="'$(Platform)'=='ARM'" Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.h">
       <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\GLideN64\src\Graphics\Parameter.h" />
@@ -494,7 +593,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
       <Project>{7bf6f100-31db-44ae-a2a5-5ddeed9a909c}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Platform)'!='ARM'">
     <ResourceCompile Include="..\GLideN64\src\GLideN64.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

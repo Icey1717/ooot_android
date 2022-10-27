@@ -450,7 +450,7 @@ void EnDntJiji_Update(Actor* thisx, GlobalContext* globalCtx)
 	if(BREG(0))
 	{
 		// "time"
-		osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 時間 ☆☆☆☆☆ %d\n" VT_RST, pthis->timer);
+		osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 時間 ☆☆☆☆☆ %d\n" VT_RST, (int)pthis->timer);
 	}
 	if((pthis->timer > 1) && (pthis->timer != 0))
 	{

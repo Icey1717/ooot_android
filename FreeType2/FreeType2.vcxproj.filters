@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="freetype2-android\src\autofit\autofit.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\basepic.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\cff\cff.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftapi.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftbase.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftbbox.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftbitmap.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftdbgmem.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftdebug.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftglyph.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftinit.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftstroke.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftsynth.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\base\ftsystem.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\pshinter\pshinter.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\psnames\psmodule.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\raster\raster.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\sfnt\sfnt.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\smooth\smooth.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="freetype2-android\src\truetype\truetype.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\freetype\config\ftconfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{121d5efa-0bb2-4b24-98be-4732f34fc999}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

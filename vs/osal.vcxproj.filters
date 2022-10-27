@@ -11,21 +11,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\osal\osal_files.h">
+    <ClInclude Include="..\GLideN64\src\osal\osal_export.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\osal\osal_keys.h">
+    <ClInclude Include="..\GLideN64\src\osal\osal_files.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\osal\osal_export.h">
+    <ClInclude Include="..\GLideN64\src\osal\osal_keys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\osal\osal_files_win32.c">
+    <ClCompile Include="..\GLideN64\src\osal\osal_files_unix.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\osal\osal_keys_win.c">
+    <ClCompile Include="..\GLideN64\src\osal\osal_keys_unix.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

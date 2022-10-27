@@ -1256,7 +1256,7 @@ void func_80A99048(EnKo* pthis, GlobalContext* globalCtx)
 		if(ENKO_TYPE == ENKO_TYPE_CHILD_7)
 		{
 			// "Angle Z"
-			osSyncPrintf(VT_BGCOL(BLUE) "  アングルＺ->(%d)\n" VT_RST, pthis->actor.shape.rot.z);
+			osSyncPrintf(VT_BGCOL(BLUE) "  アングルＺ->(%d)\n" VT_RST, (int)pthis->actor.shape.rot.z);
 			if(LINK_IS_ADULT && !CHECK_QUEST_ITEM(QUEST_MEDALLION_FOREST))
 			{
 				if(pthis->actor.shape.rot.z != 1)

@@ -481,7 +481,7 @@ bool cmd_misc_settings(GlobalContext* globalCtx, const SceneCmd* cmd)
 	return true;
 }
 
-static bool (*gSceneCmdHandlers[])(GlobalContext*, const SceneCmd*) = {
+bool (*gSceneCmdHandlers[])(GlobalContext*, const SceneCmd*) = {
     cmd_00_unknown,    cmd_actor_list,	  cmd_02_unused,	 cmd_collision_header,	    cmd_room_list,	    cmd_wind_settings, cmd_entrance_list,   cmd_special_files,	 cmd_room_behavior, cmd_09_unused, cmd_mesh_header,
     cmd_object_list,   cmd_light_list,	  cmd_path_list,	 cmd_transition_actor_list, cmd_light_setting_list, cmd_time_settings, cmd_skybox_settings, cmd_skybox_disables, cmd_exit_list,	    NULL,	   cmd_sound_settings,
     cmd_echo_settings, cmd_cutscene_data, cmd_alternate_headers, cmd_misc_settings,

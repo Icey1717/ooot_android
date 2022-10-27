@@ -4,3 +4,12 @@
 [submodule "AziAudio"]
 	path = AziAudio
 	url = https://github.com/blawar/AziAudio.git
+[submodule "FreeType2/freetype2-android"]
+	path = FreeType2/freetype2-android
+	url = https://github.com/cdave1/freetype2-android
+[submodule "PNG/libpng-android"]
+	path = PNG/libpng-android
+	url = https://github.com/julienr/libpng-android.git
+[submodule "SDL2/SDL"]
+	path = SDL2/SDL
+	url = https://github.com/libsdl-org/SDL.git

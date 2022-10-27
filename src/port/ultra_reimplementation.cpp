@@ -338,7 +338,11 @@ void osCreateMesgQueue(OSMesgQueue* mq, OSMesg* msg, s32 count)
 
 s32 osSendMesg(OSMesgQueue* mq, OSMesg mesg, s32 flag)
 {
+#ifdef OS_ANDROID
+	u32 index;
+#else
 	register u32 index;
+#endif
 
 	while(mq->validCount >= mq->msgCount)
 	{
@@ -356,7 +360,11 @@ s32 osSendMesg(OSMesgQueue* mq, OSMesg mesg, s32 flag)
 	mq->msg[index] = mesg;
 	mq->validCount++;
 
+#ifdef OS_ANDROID
+	//if(mq->mtqueue->next != NULL)
+#else
 	if(mq->mtqueue->next != NULL)
+#endif
 	{
 		// osStartThread(__osPopThread(&mq->mtqueue));
 	}

@@ -1535,7 +1535,7 @@ s16 Camera_CalcControllerPitch(Camera* camera, s16 cur, s16 target, s16 arg3)
 	f32 pitchUpdRate;
 
 	const oot::hid::Controller& controller = oot::player(0).controller();
-	s16 rStickY = (s16)controller.state().r_stick_y * (s16)-100;
+	s16 rStickY = (s16)controller.state().r_stick_y * (s16)-150;
 
 	if(rStickY != 0)
 	{
@@ -1555,7 +1555,7 @@ s16 Camera_CalcControllerYaw(Camera* camera, s16 cur, s16 target, f32 arg3, f32 
 
 	f32 yawUpdRate;
 	const oot::hid::Controller& controller = oot::player(0).controller();
-	s16 rStickX = (s16)controller.state().r_stick_x * (s16)-250;
+	s16 rStickX = (s16)controller.state().r_stick_x * (s16)-375;
 	if(rStickX != 0)
 	{
 		camera->startControlTimer = 250; // 10s
@@ -7093,7 +7093,7 @@ s32 Camera_Demo5(Camera* camera)
 	pad = sDemo5PrevSfxFrame - camera->globalCtx->frames.whole();
 	if((pad >= 0x33) || (pad < -0x32))
 	{
-		Common_PlaySfx((u16)camera->data1);
+		Common_PlaySfx((u16)(uint64_t)camera->data1);
 	}
 
 	sDemo5PrevSfxFrame = camera->globalCtx->frames.whole();

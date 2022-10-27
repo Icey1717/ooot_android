@@ -27,13 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriver.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
     <ClInclude Include="..\AziAudio\AziAudio\SoundDriver.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AziAudio\AziAudio\XAudio2SoundDriver.h">
       <Filter>Source Files\Sound Driver</Filter>
     </ClInclude>
     <ClInclude Include="..\AziAudio\AziAudio\Mupen64plusHLE\arithmetics.h">
@@ -93,29 +87,11 @@
     <ClInclude Include="..\AziAudio\AziAudio\SoundDriverLegacy.h">
       <Filter>Source Files\Sound Driver</Filter>
     </ClInclude>
-    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AziAudio\AziAudio\XAudio2SoundDriverLegacy.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AziAudio\AziAudio\WASAPISoundDriver.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AziAudio\AziAudio\WaveOutSoundDriver.h">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClInclude>
     <ClInclude Include="..\AziAudio\AziAudio\Settings.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriver.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AziAudio\AziAudio\XAudio2SoundDriver.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
     <ClCompile Include="..\AziAudio\AziAudio\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -171,18 +147,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\AziAudio\AziAudio\SoundDriverLegacy.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AziAudio\AziAudio\XAudio2SoundDriverLegacy.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AziAudio\AziAudio\WASAPISoundDriver.cpp">
-      <Filter>Source Files\Sound Driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AziAudio\AziAudio\WaveOutSoundDriver.cpp">
       <Filter>Source Files\Sound Driver</Filter>
     </ClCompile>
   </ItemGroup>

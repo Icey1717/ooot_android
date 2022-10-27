@@ -242,7 +242,7 @@ void ObjWarp2block_Init(Actor* thisx, GlobalContext* globalCtx2)
 		ObjWarp2block_SetInactive(pthis);
 	}
 
-	osSyncPrintf("時のブロック(ワープ２) (<arg> %04xH <type> color:%d range:%d)\n", pthis->dyna.actor.params & 0xFFFF, pthis->dyna.actor.home.rot.z & 7, (pthis->dyna.actor.params >> 0xB) & 7);
+	osSyncPrintf("時のブロック(ワープ２) (<arg> %04xH <type> color:%d range:%d)\n", pthis->dyna.actor.params & 0xFFFF, (int)(pthis->dyna.actor.home.rot.z & 7), (pthis->dyna.actor.params >> 0xB) & 7);
 }
 
 void ObjWarp2block_Destroy(Actor* thisx, GlobalContext* globalCtx)

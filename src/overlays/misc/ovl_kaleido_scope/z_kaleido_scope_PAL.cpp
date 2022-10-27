@@ -44,6 +44,8 @@
 #include "def/z_scene.h"
 #include "def/z_std_dma.h"
 #include "def/z_view.h"
+#include <vector>
+#include "memory"
 
 #define ACCUM_INC 4.0f
 #define ACCUM_TOTAL 64.0f

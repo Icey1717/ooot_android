@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="libpng-android\jni\arm\arm_init.c" />
+    <ClCompile Include="libpng-android\jni\arm\filter_neon_intrinsics.c" />
+    <ClCompile Include="libpng-android\jni\arm\palette_neon_intrinsics.c" />
+    <ClCompile Include="libpng-android\jni\example.c" />
+    <ClCompile Include="libpng-android\jni\png.c" />
+    <ClCompile Include="libpng-android\jni\pngerror.c" />
+    <ClCompile Include="libpng-android\jni\pngget.c" />
+    <ClCompile Include="libpng-android\jni\pngmem.c" />
+    <ClCompile Include="libpng-android\jni\pngpread.c" />
+    <ClCompile Include="libpng-android\jni\pngread.c" />
+    <ClCompile Include="libpng-android\jni\pngrio.c" />
+    <ClCompile Include="libpng-android\jni\pngrtran.c" />
+    <ClCompile Include="libpng-android\jni\pngrutil.c" />
+    <ClCompile Include="libpng-android\jni\pngset.c" />
+    <ClCompile Include="libpng-android\jni\pngtest.c" />
+    <ClCompile Include="libpng-android\jni\pngtrans.c" />
+    <ClCompile Include="libpng-android\jni\pngwio.c" />
+    <ClCompile Include="libpng-android\jni\pngwrite.c" />
+    <ClCompile Include="libpng-android\jni\pngwtran.c" />
+    <ClCompile Include="libpng-android\jni\pngwutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="jni\arm\filter_neon.S" />
+  </ItemGroup>
+</Project>

@@ -285,7 +285,7 @@ void Graph_Update(GraphicsContext* gfxCtx, GameState* gameState)
 	{
 		if(HREG(82) == 3)
 		{
-			Fault_AddClient(&sGraphUcodeFaultClient, Graph_UCodeFaultClient, gfxCtx->workBuffer, (void*)"do_count_fault");
+			Fault_AddClient(&sGraphUcodeFaultClient, (void*)Graph_UCodeFaultClient, gfxCtx->workBuffer, (void*)"do_count_fault");
 		}
 
 		Graph_DisassembleUCode(gfxCtx->workBuffer);

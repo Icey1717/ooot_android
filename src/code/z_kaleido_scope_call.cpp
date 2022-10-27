@@ -50,8 +50,8 @@ void KaleidoScopeCall_Init(GlobalContext* globalCtx)
 	// "Kaleidoscope replacement construction"
 	osSyncPrintf("Kaleidoscope replacement construction \n");
 
-	sKaleidoScopeUpdateFunc = (void (*)(GlobalContext*))KaleidoManager_GetRamAddr(KaleidoScope_Update);
-	sKaleidoScopeDrawFunc = (void (*)(GlobalContext*))KaleidoManager_GetRamAddr(KaleidoScope_Draw);
+	sKaleidoScopeUpdateFunc = (void (*)(GlobalContext*))KaleidoManager_GetRamAddr((void*)KaleidoScope_Update);
+	sKaleidoScopeDrawFunc = (void (*)(GlobalContext*))KaleidoManager_GetRamAddr((void*)KaleidoScope_Draw);
 
 	KaleidoSetup_Init(globalCtx);
 }

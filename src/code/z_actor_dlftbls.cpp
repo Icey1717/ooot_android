@@ -72,7 +72,7 @@ void ActorOverlayTable_FaultPrint(void* arg0, void* arg1)
 void ActorOverlayTable_Init(void)
 {
 	gMaxActorId = ACTOR_ID_MAX;
-	Fault_AddClient(&sFaultClient, ActorOverlayTable_FaultPrint, NULL, NULL);
+	Fault_AddClient(&sFaultClient, (void*)ActorOverlayTable_FaultPrint, NULL, NULL);
 }
 
 void ActorOverlayTable_Cleanup(void)

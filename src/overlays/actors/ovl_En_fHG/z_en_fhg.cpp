@@ -378,7 +378,7 @@ void EnfHG_Intro(EnfHG* pthis, GlobalContext* globalCtx)
 			}
 			Math_ApproachF(&pthis->cameraAt.x, pthis->actor.world.pos.x, 0.2f, 50.0f);
 			Math_ApproachF(&pthis->cameraAt.z, pthis->actor.world.pos.z, 0.2f, 50.0f);
-			osSyncPrintf("TIME %d-------------------------------------------------\n", pthis->timers[0]);
+			osSyncPrintf("TIME %d-------------------------------------------------\n", (int)pthis->timers[0]);
 			if(fabsf(pthis->actor.world.pos.z - (GND_BOSSROOM_CENTER_Z + 400.0f - 0.5f)) < 1.0f)
 			{
 				globalCtx->envCtx.unk_BF = 0;

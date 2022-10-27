@@ -1294,7 +1294,7 @@ s16 OnePointCutscene_EndCutscene(GlobalContext* globalCtx, s16 camIdx)
 	}
 	if(globalCtx->cameraPtrs[camIdx] != NULL)
 	{
-		osSyncPrintf("onepointdemo camera[%d]: delete timer=%d next=%d\n", camIdx, globalCtx->cameraPtrs[camIdx]->timer, globalCtx->cameraPtrs[camIdx]->parentCamIdx);
+		osSyncPrintf("onepointdemo camera[%d]: delete timer=%d next=%d\n", camIdx, (int)globalCtx->cameraPtrs[camIdx]->timer, globalCtx->cameraPtrs[camIdx]->parentCamIdx);
 		if(globalCtx->cameraPtrs[camIdx]->csId == 5010)
 		{
 			globalCtx->cameraPtrs[camIdx]->timer = 5;

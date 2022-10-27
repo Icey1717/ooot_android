@@ -384,7 +384,7 @@ namespace Jpeg
                     remain -= currcnt << (16 - codelen);
                     if (remain < 0) JPEG_DECODER_THROW(SyntaxError);
                     for (i = 0;  i < currcnt;  ++i) {
-                        register unsigned char code = ctx.pos[i];
+                        unsigned char code = ctx.pos[i];
                         for (j = spread;  j;  --j) {
                             vlc->bits = (unsigned char) codelen;
                             vlc->code = code;
@@ -595,9 +595,9 @@ namespace Jpeg
                 const unsigned char *pcr = ctx.comp[2].pixels;
                 for (yy = ctx.height;  yy;  --yy) {
                     for (x = 0;  x < ctx.width;  ++x) {
-                        register int y = py[x] << 8;
-                        register int cb = pcb[x] - 128;
-                        register int cr = pcr[x] - 128;
+                        int y = py[x] << 8;
+                        int cb = pcb[x] - 128;
+                        int cr = pcr[x] - 128;
                         *prgb++ = _Clip((y            + 359 * cr + 128) >> 8);
                         *prgb++ = _Clip((y -  88 * cb - 183 * cr + 128) >> 8);
                         *prgb++ = _Clip((y + 454 * cb            + 128) >> 8);

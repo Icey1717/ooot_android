@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -24,6 +28,17 @@
     <ProjectGuid>{787282e8-e1bf-4dbd-b3b5-26ce47f0a8b1}</ProjectGuid>
     <RootNamespace>OOT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ApplicationType>Android</ApplicationType>
+    <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
+    <UseMultiToolTask>true</UseMultiToolTask>
+    <EnforceProcessCountAcrossBuilds>true</EnforceProcessCountAcrossBuilds>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
@@ -59,10 +74,48 @@
     <Import Project="oot.release.props" />
     <Import Project="oot.x64.props" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="oot.props" />
+    <Import Project="oot.debug.props" />
+    <Import Project="oot.ARM.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="oot.props" />
+    <Import Project="oot.release.props" />
+    <Import Project="oot.ARM.props" />
+  </ImportGroup>
   <PropertyGroup>
-    <IntDir>$(Configuration)\$(PlatformShortName)\</IntDir>
+    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)$(Configuration)\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
+    <PackageDebugSymbols>true</PackageDebugSymbols>
+    <TargetName>libmain</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <CppLanguageStandard>c++1z</CppLanguageStandard>
+      <PreprocessorDefinitions>__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
+      <ExceptionHandling>Enabled</ExceptionHandling>
+      <Verbose>false</Verbose>
+    </ClCompile>
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\</AdditionalLibraryDirectories>
+      <AdditionalDependencies />
+      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64d$(libExt);AziAudio$(libExt);oot_assetsd$(libExt);GLideNHQd$(libExt);osald$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;%(LibraryDependencies)</LibraryDependencies>
+      <VerboseOutput>false</VerboseOutput>
+    </Link>
+    <CustomBuildStep>
+      <Command>(Robocopy $(SolutionDir)..\external\$(Platform) $(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)) ^&amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
+      <Outputs>Complete</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="..\src\boot\assert.cpp" />
@@ -748,6 +801,7 @@
     <ClCompile Include="..\src\overlays\misc\ovl_kaleido_scope\z_lmap_mark.cpp" />
     <ClCompile Include="..\roms\$(buildrom)\src\overlays\misc\ovl_kaleido_scope\z_lmap_mark_data.cpp" />
     <ClCompile Include="..\roms\$(buildrom)\src\overlays\misc\ovl_map_mark_data\z_map_mark_data.cpp" />
+    <ClCompile Include="..\src\port\ARM\android_native_app_glue.c" />
     <ClCompile Include="..\src\port\configfile.cpp" />
     <ClCompile Include="..\src\port\controller\controller.cpp" />
     <ClCompile Include="..\src\port\controller\controllers.cpp" />
@@ -756,11 +810,12 @@
     <ClCompile Include="..\src\port\controller\tas.cpp" />
     <ClCompile Include="..\src\port\controller\xcontroller.cpp" />
     <ClCompile Include="..\src\port\debug.cpp" />
-    <ClCompile Include="..\src\port\main.cpp" />
+    <ClCompile Include="..\src\port\pc_main.cpp" />
+    <ClCompile Condition="'$(Platform)'!='ARM'" Include="..\src\port\PC\main.cpp" />
+    <ClCompile Condition="'$(Platform)'=='ARM'" Include="..\src\port\ARM\main.cpp" />
     <ClCompile Include="..\src\port\mixer.cpp" />
     <ClCompile Include="..\src\port\nx.cpp" />
     <ClCompile Include="..\src\port\options.cpp" />
-    <ClCompile Include="..\src\port\pc_main.cpp" />
     <ClCompile Include="..\src\port\player\player.cpp" />
     <ClCompile Include="..\src\port\player\players.cpp" />
     <ClCompile Include="..\src\port\rsp.cpp" />
@@ -822,7 +877,7 @@
     <ClInclude Include="..\src\port\player\players.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Platform)'!='ARM'">
     <ResourceCompile Include="OOT.rc" />
   </ItemGroup>
   <ItemGroup>

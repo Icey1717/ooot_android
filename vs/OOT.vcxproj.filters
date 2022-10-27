@@ -2094,9 +2094,6 @@
     <ClCompile Include="..\src\boot\z_std_dma.cpp">
       <Filter>Source Files\boot</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\port\main.cpp">
-      <Filter>Source Files\port</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\libultra\gu\scale.cpp">
       <Filter>Source Files\libultra\gu</Filter>
     </ClCompile>
@@ -2125,9 +2122,6 @@
       <Filter>Source Files\port</Filter>
     </ClCompile>
     <ClCompile Include="..\src\port\nx.cpp">
-      <Filter>Source Files\port</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\port\pc_main.cpp">
       <Filter>Source Files\port</Filter>
     </ClCompile>
     <ClCompile Include="..\src\port\ultra_reimplementation.cpp">
@@ -2176,6 +2170,15 @@
       <Filter>Source Files\overlays\misc</Filter>
     </ClCompile>
     <ClCompile Include="..\src\json.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\port\ARM\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\port\pc_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\port\ARM\android_native_app_glue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2333,11 +2336,6 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="OOT.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="OOT.ico">

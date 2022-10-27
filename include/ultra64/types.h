@@ -61,6 +61,85 @@ typedef union
 class Pointer
 {
 	public:
+#ifdef __clang__
+	Pointer() : m_address(0)
+	{
+	}
+
+	Pointer(uintptr_t address) : m_address(address)
+	{
+	}
+
+	Pointer(int address) : m_address(address)
+	{
+	}
+
+	Pointer(const void* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(void* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const s8* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(s8* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const u8* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(u8* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const s16* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(s16* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const u16* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(u16* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const s32* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(s32* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(const u32* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer(u32* address) : m_address((uintptr_t)address)
+	{
+	}
+
+	Pointer operator+(const Pointer& b) const
+	{
+		return Pointer(m_address + b.m_address);
+	}
+
+	Pointer operator-(const Pointer& b) const
+	{
+		return Pointer(m_address - b.m_address);
+	}
+#else
 	constexpr Pointer() : m_address(0)
 	{
 	}
@@ -138,6 +217,7 @@ class Pointer
 	{
 		return Pointer(m_address - b.m_address);
 	}
+#endif
 
 	Pointer& operator+=(const Pointer& b)
 	{

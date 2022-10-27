@@ -14,6 +14,10 @@
 #include "def/code_800E6840.h"
 #include "def/initialize.h"
 
+#if defined(__clang__)
+#include <mm_malloc.h>
+#endif
+
 void AudioHeap_InitSampleCaches(u32 persistentSize, u32 temporarySize);
 SampleCacheEntry* AudioHeap_AllocTemporarySampleCacheEntry(u32 size);
 SampleCacheEntry* AudioHeap_AllocPersistentSampleCacheEntry(u32 size);
@@ -229,6 +233,8 @@ void* AudioHeap_Alloc(AudioAllocPool* pool, u32 size)
 	pool->count++;
 #ifdef _MSC_VER
 	return _aligned_malloc(ALIGN16(size), 0x10);
+#elif defined(__clang__)
+	return  _mm_malloc(ALIGN16(size), 0x10);
 #else
 	return aligned_alloc(0x10, ALIGN16(size));
 #endif

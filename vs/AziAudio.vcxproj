@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -23,8 +27,22 @@
     <RootNamespace>AziAudio</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ApplicationType>Android</ApplicationType>
+    <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM'">
+    <ClCompile>
+      <PreprocessorDefinitions>OS_LINUX;OS_ANDROID;EGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ImportGroup Label="PropertySheets">
@@ -40,12 +58,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>$(ProjectName)d</TargetName>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>$(LLVMToolchainPrebuiltRoot)\lib64\clang\$(LLVMVersion)\include;..\external\include;</IncludePath>
+    <TargetExt>.so</TargetExt>
+    <PackageDebugSymbols>true</PackageDebugSymbols>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug' and '$(Platform)'!='ARM'">
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName)d.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' and '$(Platform)'!='ARM'">
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
     </Lib>
@@ -59,8 +82,9 @@
     <Link>
       <AdditionalLibraryDirectories Condition="'$(Platform)'=='Win32'">$(SolutionDir)..\AziAudi\3rd Party\directx\lib\x86</AdditionalLibraryDirectories>
       <AdditionalLibraryDirectories Condition="'$(Platform)'=='x64'">$(SolutionDir)..\AziAudi\3rd Party\directx\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">%(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -68,8 +92,6 @@
     <ClInclude Include="..\AziAudio\AziAudio\AudioSpec.h" />
     <ClInclude Include="..\AziAudio\AziAudio\common.h" />
     <ClInclude Include="..\AziAudio\AziAudio\Configuration.h" />
-    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriver.h" />
-    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.h" />
     <ClInclude Include="..\AziAudio\AziAudio\Mupen64plusHLE\arithmetics.h" />
     <ClInclude Include="..\AziAudio\AziAudio\Mupen64plusHLE\audio.h" />
     <ClInclude Include="..\AziAudio\AziAudio\Mupen64plusHLE\common.h" />
@@ -86,11 +108,15 @@
     <ClInclude Include="..\AziAudio\AziAudio\SoundDriverFactory.h" />
     <ClInclude Include="..\AziAudio\AziAudio\SoundDriverInterface.h" />
     <ClInclude Include="..\AziAudio\AziAudio\SoundDriverLegacy.h" />
-    <ClInclude Include="..\AziAudio\AziAudio\WASAPISoundDriver.h" />
     <ClInclude Include="..\AziAudio\AziAudio\WaveOut.h" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'">
     <ClInclude Include="..\AziAudio\AziAudio\WaveOutSoundDriver.h" />
     <ClInclude Include="..\AziAudio\AziAudio\XAudio2SoundDriver.h" />
     <ClInclude Include="..\AziAudio\AziAudio\XAudio2SoundDriverLegacy.h" />
+    <ClInclude Include="..\AziAudio\AziAudio\WASAPISoundDriver.h" />
+    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriver.h" />
+    <ClInclude Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\AziAudio\AziAudio\ABI1.cpp" />
@@ -104,8 +130,6 @@
     <ClCompile Include="..\AziAudio\AziAudio\ABI_MixerInterleave.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\ABI_Resample.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\Configuration.cpp" />
-    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriver.cpp" />
-    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\HLEMain.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\main.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\NoSoundDriver.cpp" />
@@ -113,8 +137,12 @@
     <ClCompile Include="..\AziAudio\AziAudio\SoundDriverFactory.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\SoundDriverInterface.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\SoundDriverLegacy.cpp" />
-    <ClCompile Include="..\AziAudio\AziAudio\WASAPISoundDriver.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\WaveOut.cpp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'">
+    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriver.cpp" />
+    <ClCompile Include="..\AziAudio\AziAudio\DirectSoundDriverLegacy.cpp" />
+    <ClCompile Include="..\AziAudio\AziAudio\WASAPISoundDriver.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\WaveOutSoundDriver.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\XAudio2SoundDriver.cpp" />
     <ClCompile Include="..\AziAudio\AziAudio\XAudio2SoundDriverLegacy.cpp" />

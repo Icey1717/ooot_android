@@ -17,6 +17,10 @@ expected/
 notes/
 baserom/
 docs/doxygen/
+*.so
+*.so.recipe
+*.a
+*.a.recipe
 *.lib
 *.idb
 *.pdb

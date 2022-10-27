@@ -264,9 +264,9 @@ void BossFd2_Emerge(BossFd2* pthis, GlobalContext* globalCtx)
 	switch(pthis->FD2_ACTION_STATE)
 	{
 		case 0:
-			osSyncPrintf("UP time %d \n", pthis->timers[0]);
-			osSyncPrintf("PL time %x \n", player);
-			osSyncPrintf("MT time %x \n", bossFd);
+			osSyncPrintf("UP time %d \n", (uint)pthis->timers[0]);
+			osSyncPrintf("PL time %x \n", (uint)player);
+			osSyncPrintf("MT time %x \n", (uint)bossFd);
 			if((pthis->timers[0] == 0) && (player->actor.world.pos.y > 70.0f))
 			{
 				osSyncPrintf("UP 1.6 \n");

@@ -826,7 +826,7 @@ void BossGanondrof_Stunned(BossGanondrof* pthis, GlobalContext* globalCtx)
 		pthis->actor.flags |= ACTOR_FLAG_10;
 	}
 
-	osSyncPrintf("TIME0 %d ********************************************\n", pthis->timers[0]);
+	osSyncPrintf("TIME0 %d ********************************************\n", (int)pthis->timers[0]);
 	if(pthis->timers[0] == 0)
 	{
 		BossGanondrof_SetupNeutral(pthis, -5.0f);
@@ -1647,7 +1647,7 @@ void BossGanondrof_Draw(Actor* thisx, GlobalContext* globalCtx)
 
 	OPEN_DISPS(globalCtx->gfxCtx, "../z_boss_ganondrof.c", 3716);
 	osSyncPrintf("MOVE P = %x\n", pthis->actor.update);
-	osSyncPrintf("STOP TIMER = %d ==============\n", pthis->actor.freezeTimer);
+	osSyncPrintf("STOP TIMER = %d ==============\n", (int)pthis->actor.freezeTimer);
 	horse = (EnfHG*)pthis->actor.child;
 	if(pthis->flyMode == GND_FLY_PAINTING)
 	{

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef FRAMERATE_H
+#define FRAMERATE_H
+
 #include <math.h>
 #include "macros.h"
 #include "ultra64/types.h"
@@ -313,9 +316,21 @@ class Timer
 		return *this;
 	}
 
+	int operator^(int n)
+	{
+		return whole() ^ n;
+	}
+
 	s32 operator%(s32 n) const
 	{
 		return whole() % n;
+	}
+
+	Timer operator&(int n) const
+	{
+		Timer t = *this;
+		t &= n;
+		return t;
 	}
 
 	Timer operator&(long n) const
@@ -339,12 +354,22 @@ class Timer
 		return t;
 	}
 
+	s32 operator<<(int n)
+	{
+		return whole() << n;
+	}
+
 	s32 operator<<(long n)
 	{
 		return whole() << n;
 	}
 
 	s32 operator>>(long n)
+	{
+		return whole() >> n;
+	}
+
+	s32 operator>>(int n)
 	{
 		return whole() >> n;
 	}
@@ -455,6 +480,11 @@ class TimerU16 : public Timer
 	{
 	}
 };
+
+inline TimerU16 operator&(const TimerU16& t, const int& p)
+{
+	return t & p;
+}
 
 #define FLOAT_STEP (1.0f / m_counterScaler)
 
@@ -809,3 +839,5 @@ class rf32
 	float m_rounded;
 	bool m_dirty;
 };
+
+#endif

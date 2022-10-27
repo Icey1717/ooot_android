@@ -561,8 +561,8 @@ void BossFd_Fly(BossFd* pthis, GlobalContext* globalCtx)
 							break;
 					}
 				}
-				osSyncPrintf("pthis->timer[2] = %d\n", pthis->timer2);
-				osSyncPrintf("pthis->timer[5] = %d\n", pthis->timer5);
+				osSyncPrintf("pthis->timer[2] = %d\n", (int)pthis->timer2);
+				osSyncPrintf("pthis->timer[5] = %d\n", (int)pthis->timer5);
 				if(pthis->timer2 < 3)
 				{
 					int zyz = 0;

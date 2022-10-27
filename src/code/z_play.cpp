@@ -488,7 +488,7 @@ namespace oot::gamestate
 		D_801614B0.a = 0;
 		Flags_UnsetAllEnv(globalCtx);
 
-		Fault_AddClient(&D_801614B8, ZeldaArena_Display, NULL, NULL);
+		Fault_AddClient(&D_801614B8, (void*)ZeldaArena_Display, NULL, NULL);
 		Actor_InitContext(globalCtx, &globalCtx->actorCtx, globalCtx->linkActorEntry);
 
 		while(!func_800973FC(globalCtx, &globalCtx->roomCtx))
@@ -1003,7 +1003,7 @@ void Gameplay_Update(GlobalContext* globalCtx)
 
 				if(globalCtx->actorCtx.freezeFlashTimer && (globalCtx->actorCtx.freezeFlashTimer-- < 5))
 				{
-					osSyncPrintf("FINISH=%d\n", globalCtx->actorCtx.freezeFlashTimer);
+					osSyncPrintf("FINISH=%d\n", (int)globalCtx->actorCtx.freezeFlashTimer);
 					if((globalCtx->actorCtx.freezeFlashTimer > 0) && ((globalCtx->actorCtx.freezeFlashTimer % 2) != 0))
 					{
 						globalCtx->envCtx.fillScreen = true;
