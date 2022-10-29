@@ -91,7 +91,6 @@
     <LocalDebuggerWorkingDirectory>$(SolutionDir)$(Configuration)\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
     <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
     <PackageDebugSymbols>true</PackageDebugSymbols>
     <TargetName>libmain</TargetName>
@@ -112,9 +111,15 @@
       <VerboseOutput>false</VerboseOutput>
     </Link>
     <CustomBuildStep>
-      <Command>(Robocopy $(SolutionDir)..\external\$(Platform) $(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)) ^&amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
-      <Outputs>Complete</Outputs>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>(Robocopy $(SolutionDir)..\external\$(Platform) $(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi) /NFL /NDL /NJH) ^&amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
+      <Message>Copy libs into folder.</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
