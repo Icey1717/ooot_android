@@ -395,7 +395,11 @@ s32 osRecvMesg(OSMesgQueue* mq, OSMesg* msg, s32 flag)
 	mq->first = (mq->first + 1) % mq->msgCount;
 	mq->validCount--;
 
-	if(mq->fullqueue->next != NULL)
+	#ifdef OS_ANDROID
+	//if(mq->mtqueue->next != NULL)
+#else
+	if(mq->mtqueue->next != NULL)
+#endif
 	{
 		// osStartThread(__osPopThread(&mq->fullqueue));
 	}

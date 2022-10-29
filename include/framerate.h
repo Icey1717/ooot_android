@@ -483,7 +483,7 @@ class TimerU16 : public Timer
 
 inline TimerU16 operator&(const TimerU16& t, const int& p)
 {
-	return t & p;
+	return t.whole() & p;
 }
 
 #define FLOAT_STEP (1.0f / m_counterScaler)

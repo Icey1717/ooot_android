@@ -442,7 +442,7 @@ extern "C"
 {
 	__attribute__((visibility("default"))) int SDL_main(int argc, char* argv[])
 	{
-		const char* szWorkingDirectory = "/data/data/com.OOT_Android/files/";
+		const char* szWorkingDirectory = "/data/data/com.OOT/files/";
 
 		int iDirResult = chdir(szWorkingDirectory);
 

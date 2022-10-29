@@ -117,8 +117,10 @@
       </Outputs>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>(Robocopy $(SolutionDir)..\external\$(Platform) $(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi) /NFL /NDL /NJH) ^&amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
-      <Message>Copy libs into folder.</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />

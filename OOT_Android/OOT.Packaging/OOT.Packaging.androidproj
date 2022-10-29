@@ -149,7 +149,15 @@
     <AntProjectPropertiesFile Include="project.properties" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FreeType2\FreeType2.vcxproj" />
+    <ProjectReference Include="..\..\PNG\PNG.vcxproj" />
+    <ProjectReference Include="..\..\SDL2\SDL2.vcxproj" />
+    <ProjectReference Include="..\..\vs\AziAudio.vcxproj" />
+    <ProjectReference Include="..\..\vs\GLideN64.vcxproj" />
+    <ProjectReference Include="..\..\vs\libGLideNHQ.vcxproj" />
     <ProjectReference Include="..\..\vs\OOT.vcxproj" />
+    <ProjectReference Include="..\..\vs\OOT_Assets.vcxproj" />
+    <ProjectReference Include="..\..\vs\osal.vcxproj" />
   </ItemGroup>
   <Import Project="$(AndroidTargetsPath)\Android.targets" />
   <ImportGroup Label="ExtensionTargets" />
