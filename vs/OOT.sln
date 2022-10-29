@@ -28,9 +28,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FreeType2", "..\FreeType2\F
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PNG", "..\PNG\PNG.vcxproj", "{DBFCE763-A42E-4F15-B446-40223BF3B59F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OOT_Android", "OOT_Android", "{8DDA14FB-4F8B-4D6C-8494-347A775A15D3}"
-EndProject
-Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "OOT_Android.Packaging", "..\OOT_Android\OOT_Android.Packaging\OOT_Android.Packaging.androidproj", "{0697F0AE-5BB8-48BD-8AF4-77A369BF81C1}"
+Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "OOT.Packaging", "..\OOT_Android\OOT.Packaging\OOT.Packaging.androidproj", "{0697F0AE-5BB8-48BD-8AF4-77A369BF81C1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{787282E8-E1BF-4DBD-B3B5-26CE47F0A8B1} = {787282E8-E1BF-4DBD-B3B5-26CE47F0A8B1}
 	EndProjectSection
@@ -394,9 +392,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{0697F0AE-5BB8-48BD-8AF4-77A369BF81C1} = {8DDA14FB-4F8B-4D6C-8494-347A775A15D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B87CF08B-266A-4DBC-A730-0AC8D3D30E33}

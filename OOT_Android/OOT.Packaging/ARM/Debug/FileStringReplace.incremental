@@ -1,0 +1,1 @@
+$(AntDependencies)=;$(ApplicationId)=applicationId = "";$(ConfigurationType)=application;$(AarDependencies)=;$(AarDependenciesSettings)=;$(ApplicationName)=OOT;$(AndroidAppLibName)=OOT;$(AndroidBuildToolsVersion)=33.0.0;$(AndroidAPILevelNumber)=29;$(androidapilevel)=android-29;$(projectname)=OOT.Packaging;
