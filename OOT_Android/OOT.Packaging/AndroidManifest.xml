@@ -2,7 +2,7 @@
 <!-- Changes made to Package Name should also be reflected in the Debugging - Package Name property, in the Property Pages -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.$(ApplicationName)"
-        android:versionCode="33"
+        android:versionCode="34"
         android:versionName="1.0"
 		android:installLocation="auto">
 

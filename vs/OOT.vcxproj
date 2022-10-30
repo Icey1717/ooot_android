@@ -9,6 +9,10 @@
       <Configuration>Debug</Configuration>
       <Platform>ARM</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -29,7 +33,7 @@
     <RootNamespace>OOT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+  <PropertyGroup Condition="'$(Platform)'=='ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -38,7 +42,7 @@
     <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
     <UseMultiToolTask>true</UseMultiToolTask>
     <EnforceProcessCountAcrossBuilds>true</EnforceProcessCountAcrossBuilds>
-    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <AndroidAPILevel>android-29</AndroidAPILevel>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
@@ -95,20 +99,22 @@
     <PackageDebugSymbols>true</PackageDebugSymbols>
     <TargetName>libmain</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <TargetName>libmain</TargetName>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PreprocessorDefinitions>__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>Enabled</ExceptionHandling>
-      <Verbose>false</Verbose>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\Debug\;..\external\ARM\Debug_mupenplus\</AdditionalLibraryDirectories>
       <AdditionalDependencies />
-      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64d$(libExt);AziAudio$(libExt);oot_assetsd$(libExt);GLideNHQd$(libExt);osald$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;%(LibraryDependencies)</LibraryDependencies>
-      <VerboseOutput>false</VerboseOutput>
+      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <CustomBuildStep>
       <Command>
@@ -117,10 +123,24 @@
       </Outputs>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>
-      </Command>
-      <Message>
-      </Message>
+      <Command>(Robocopy $(SolutionDir)..\OOT_Android\OOT.Packaging\src $(SolutionDir)\$(Configuration)\$(Platform)\Package\src /MIR /NFL /NDL /NJH) &amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
+      <Message>Mirror java src files</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <ClCompile>
+      <CppLanguageStandard>c++1z</CppLanguageStandard>
+      <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
+      <ExceptionHandling>Enabled</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\Release\;..\external\ARM\Release_mupenplus\</AdditionalLibraryDirectories>
+      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);</LibraryDependencies>
+      <AdditionalDependencies />
+    </Link>
+    <PostBuildEvent>
+      <Command>(Robocopy $(SolutionDir)..\OOT_Android\OOT.Packaging\src $(SolutionDir)\$(Configuration)\$(Platform)\Package\src /MIR /NFL /NDL /NJH) &amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
+      <Message>Mirror java src files</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
@@ -808,7 +828,6 @@
     <ClCompile Include="..\src\overlays\misc\ovl_kaleido_scope\z_lmap_mark.cpp" />
     <ClCompile Include="..\roms\$(buildrom)\src\overlays\misc\ovl_kaleido_scope\z_lmap_mark_data.cpp" />
     <ClCompile Include="..\roms\$(buildrom)\src\overlays\misc\ovl_map_mark_data\z_map_mark_data.cpp" />
-    <ClCompile Include="..\src\port\ARM\android_native_app_glue.c" />
     <ClCompile Include="..\src\port\configfile.cpp" />
     <ClCompile Include="..\src\port\controller\controller.cpp" />
     <ClCompile Include="..\src\port\controller\controllers.cpp" />

@@ -30,7 +30,11 @@
     <ProjectGuid>{37D31D7F-C4E7-45B0-AEF6-D6824A243CF7}</ProjectGuid>
     <RootNamespace>GLideN64</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'" Label="Configuration">
+  <PropertyGroup>
+    <UseMultiToolTask>true</UseMultiToolTask>
+    <EnforceProcessCountAcrossBuilds>true</EnforceProcessCountAcrossBuilds>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -38,7 +42,7 @@
     <ApplicationType>Android</ApplicationType>
     <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <AndroidAPILevel>android-29</AndroidAPILevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(WindowsTargetPlatformVersion)'=='' and '$(VisualStudioVersion)' != '12.0' and '$(VisualStudioVersion)' != '14.0'">
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
@@ -64,7 +68,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules />
     <CodeAnalysisRuleAssemblies />
-    <OutDir>$(SolutionDir)..\external\$(Platform)\</OutDir>
+    <OutDir>$(SolutionDir)..\external\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug_mupenplus'">
@@ -79,12 +83,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32' or '$(Configuration)|$(Platform)'=='Release_mupenplus|x64'">
     <TargetName>GLideN64</TargetName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">
-    <TargetName>libGLideN64d</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">
-    <TargetName>libGLideN64</TargetName>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -95,7 +95,7 @@
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../FreeType2/freetype2-android/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">
-    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/freetype2-android/include;$(IncludePath)</IncludePath>
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
@@ -136,8 +136,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release_mupenplus'">
     <ClCompile>
-      <Optimization>Full</Optimization>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>FullDebug</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PreprocessorDefinitions>__VEC4_OPT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -264,6 +264,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">Disabled</Optimization>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">Disabled</Optimization>
       <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">c++1z</CppLanguageStandard>
+      <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">c++1z</CppLanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
