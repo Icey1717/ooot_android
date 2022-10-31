@@ -6463,7 +6463,7 @@ void Fishing_UpdateOwner(Actor* thisx, GlobalContext* globalCtx2)
 	sREG(14) = 0;
 
 	osSyncPrintf(VT_FGCOL(GREEN));
-	osSyncPrintf("zelda_time %x\n", ((void)0, (int)gSaveContext.dayTime));
+	osSyncPrintf("zelda_time %x\n", ((void)0, (s32)gSaveContext.dayTime));
 	osSyncPrintf(VT_RST);
 
 	if(D_80B7E077 >= 2)

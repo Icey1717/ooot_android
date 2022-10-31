@@ -152,7 +152,7 @@ void ObjTimeblock_Init(Actor* thisx, GlobalContext* globalCtx)
 	}
 
 	// "Block of time"
-	osSyncPrintf("時のブロック (<arg> %04xH <type> save:%d color:%d range:%d move:%d)\n", (u16)pthis->dyna.actor.params, pthis->unk_177, (int)(pthis->dyna.actor.home.rot.z & 7), (pthis->dyna.actor.params >> 11) & 7, (pthis->dyna.actor.params >> 10) & 1);
+	osSyncPrintf("時のブロック (<arg> %04xH <type> save:%d color:%d range:%d move:%d)\n", (u16)pthis->dyna.actor.params, pthis->unk_177, (s32)(pthis->dyna.actor.home.rot.z & 7), (pthis->dyna.actor.params >> 11) & 7, (pthis->dyna.actor.params >> 10) & 1);
 }
 
 void ObjTimeblock_Destroy(Actor* thisx, GlobalContext* globalCtx)

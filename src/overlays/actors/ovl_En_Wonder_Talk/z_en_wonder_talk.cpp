@@ -183,7 +183,7 @@ void func_80B3943C(EnWonderTalk* pthis, GlobalContext* globalCtx)
 					// "Actual message type"
 					osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 実質メッセージ種類     %x\n" VT_RST, pthis->actor.textId);
 					// "Specified range"
-					osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (int)pthis->actor.world.rot.z);
+					osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (s32)pthis->actor.world.rot.z);
 					osSyncPrintf("\n\n");
 				}
 				pthis->unk_15A = 0;

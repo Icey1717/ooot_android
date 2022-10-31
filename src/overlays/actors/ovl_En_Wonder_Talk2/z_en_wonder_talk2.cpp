@@ -65,7 +65,7 @@ void EnWonderTalk2_Init(Actor* thisx, GlobalContext* globalCtx)
 
 		osSyncPrintf("\n\n");
 		// "originally?"
-		osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 元は？       ☆☆☆☆☆ %d\n" VT_RST, (int)pthis->actor.world.rot.z);
+		osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 元は？       ☆☆☆☆☆ %d\n" VT_RST, (s32)pthis->actor.world.rot.z);
 		// "The range is?"
 		osSyncPrintf(VT_FGCOL(PURPLE) "☆☆☆☆☆ レンジは？   ☆☆☆☆☆ %d\n" VT_RST, pthis->actor.targetMode);
 		// "Is the range?"
@@ -161,7 +161,7 @@ void func_80B3A15C(EnWonderTalk2* pthis, GlobalContext* globalCtx)
 				// "Actual message type"
 				osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 実質メッセージ種類     %x\n" VT_RST, pthis->actor.textId);
 				// "Specified range"
-				osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (int)pthis->actor.world.rot.z);
+				osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (s32)pthis->actor.world.rot.z);
 				// "Processing range"
 				osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 処理範囲               %f\n" VT_RST, pthis->triggerRange);
 				switch(pthis->talkMode)
@@ -265,7 +265,7 @@ void func_80B3A4F8(EnWonderTalk2* pthis, GlobalContext* globalCtx)
 				// "Real message type"
 				osSyncPrintf(VT_FGCOL(CYAN) "☆☆☆☆☆ 実質メッセージ種類     %x\n" VT_RST, pthis->actor.textId);
 				// "Specified range"
-				osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (int)pthis->actor.world.rot.z);
+				osSyncPrintf(VT_FGCOL(GREEN) "☆☆☆☆☆ 指定範囲               %d\n" VT_RST, (s32)pthis->actor.world.rot.z);
 				// "Processing range"
 				osSyncPrintf(VT_FGCOL(YELLOW) "☆☆☆☆☆ 処理範囲               %f\n" VT_RST, pthis->triggerRange);
 				// "What is your range?"

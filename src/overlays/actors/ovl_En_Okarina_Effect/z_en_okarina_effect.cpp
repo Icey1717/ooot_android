@@ -87,7 +87,7 @@ void EnOkarinaEffect_ManageStorm(EnOkarinaEffect* pthis, GlobalContext* globalCt
 		{
 			pthis->timer--;
 		}
-		osSyncPrintf("\nthis->timer=[%d]", (int)pthis->timer);
+		osSyncPrintf("\nthis->timer=[%d]", (s32)pthis->timer);
 		if(pthis->timer == 308)
 		{
 			osSyncPrintf("\n\n\n豆よ のびろ 指定\n\n\n"); // "Let's grow some beans"

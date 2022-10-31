@@ -83,11 +83,11 @@ void ElfMsg_Init(Actor* thisx, GlobalContext* globalCtx)
 
 	// "Conditions for Elf Tag disappearing"
 	osSyncPrintf(VT_FGCOL(CYAN) "\nエルフ タグ 消える条件 %d" VT_RST "\n", (thisx->params >> 8) & 0x3F);
-	osSyncPrintf(VT_FGCOL(CYAN) "\nthisx->shape.angle.sy = %d\n" VT_RST, (int)thisx->shape.rot.y);
+	osSyncPrintf(VT_FGCOL(CYAN) "\nthisx->shape.angle.sy = %d\n" VT_RST, (s32)thisx->shape.rot.y);
 	if(thisx->shape.rot.y >= 0x41)
 	{
 		// "Conditions for Elf Tag appearing"
-		osSyncPrintf(VT_FGCOL(CYAN) "\nエルフ タグ 出現条件 %d" VT_RST "\n", (int)thisx->shape.rot.y - 0x41);
+		osSyncPrintf(VT_FGCOL(CYAN) "\nエルフ タグ 出現条件 %d" VT_RST "\n", (s32)thisx->shape.rot.y - 0x41);
 	}
 
 	if(!ElfMsg_KillCheck(pthis, globalCtx))

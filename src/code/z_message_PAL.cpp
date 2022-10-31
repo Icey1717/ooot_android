@@ -1058,7 +1058,7 @@ void Message_DrawText(GlobalContext* globalCtx, Gfx** gfxP)
 					msgCtx->stateTimer = msgCtx->msgBufDecoded[++i] << 8;
 					msgCtx->stateTimer |= msgCtx->msgBufDecoded[++i];
 					// "Total wct"
-					osSyncPrintf("合計wct=%x(%d)\n", (uint)msgCtx->stateTimer, (int)msgCtx->stateTimer);
+					osSyncPrintf("合計wct=%x(%d)\n", (u32)msgCtx->stateTimer, (s32)msgCtx->stateTimer);
 				}
 				*gfxP = gfx;
 				return;
