@@ -4,7 +4,6 @@
   <PropertyGroup Label="UserMacros">
     <buildrom>#BUILD_ROM#</buildrom>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>

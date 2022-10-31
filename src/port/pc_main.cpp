@@ -272,6 +272,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine,
 void initialize();
 #endif
 
+#ifndef OS_ANDROID
 extern "C"
 {
 	int main(int argc, char* argv[]);
@@ -288,6 +289,7 @@ int main(int argc, char* argv[])
 	main2(argc, argv);
 	return 0;
 }
+#endif
 
 
 static bool g_isRunning = true;
