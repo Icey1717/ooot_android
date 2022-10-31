@@ -57,7 +57,9 @@ ActorInit Boss_Ganon2_InitVars = {
     ACTOR_BOSS_GANON2, ACTORCAT_BOSS, FLAGS, OBJECT_GANON2, ACTOR_FACTORY(BossGanon2), (ActorFunc)BossGanon2_Init, (ActorFunc)BossGanon2_Destroy, (ActorFunc)BossGanon2_Update, (ActorFunc)BossGanon2_Draw, (ActorFunc)BossGanon2_Reset,
 };
 
+#define INLINE_INCLUDE_CPP_COMPILE
 #include "z_boss_ganon2_data.cpp"
+#undef INLINE_INCLUDE_CPP_COMPILE
 
 void BossGanon2_InitRand(s32 seedInit0, s32 seedInit1, s32 seedInit2)
 {

@@ -1,3 +1,5 @@
+#ifdef INLINE_INCLUDE_CPP_COMPILE
+
 #include "actor_common.h"
 #include "z_boss_dodongo.h"
 
@@ -236,3 +238,5 @@ static ColliderJntSphInit sJntSphInit = {
 static Vec3f sUnkZeroVec = {0.0f, 0.0f, 0.0f};
 
 #include "overlays/ovl_Boss_Dodongo/ovl_Boss_Dodongo.cpp"
+
+#endif

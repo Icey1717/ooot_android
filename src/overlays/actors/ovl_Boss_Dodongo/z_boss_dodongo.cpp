@@ -84,7 +84,9 @@ ActorInit Boss_Dodongo_InitVars = {
     ACTOR_EN_DODONGO, ACTORCAT_BOSS, FLAGS, OBJECT_KINGDODONGO, ACTOR_FACTORY(BossDodongo), (ActorFunc)BossDodongo_Init, (ActorFunc)BossDodongo_Destroy, (ActorFunc)BossDodongo_Update, (ActorFunc)BossDodongo_Draw, (ActorFunc)BossDodongo_Reset,
 };
 
+#define INLINE_INCLUDE_CPP_COMPILE
 #include "z_boss_dodongo_data.cpp"
+#undef INLINE_INCLUDE_CPP_COMPILE
 
 static InitChainEntry sInitChain[] = {
     ICHAIN_U8(targetMode, 5, ICHAIN_CONTINUE),

@@ -1,3 +1,5 @@
+#ifdef INLINE_INCLUDE_CPP_COMPILE
+
 #include "actor_common.h"
 #include "overlays/actors/ovl_En_Zl3/z_en_zl3.h"
 #include "z_boss_ganon2.h"
@@ -353,3 +355,5 @@ static Vec3f D_809105D8[4];
 static Vec3f D_80910608[4];
 
 static s8 D_80910638;
+
+#endif
