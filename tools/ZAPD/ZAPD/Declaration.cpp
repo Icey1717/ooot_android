@@ -87,7 +87,7 @@ std::string Declaration::GetNormalDeclarationStr() const
 
 	if (IsStatic())
 	{
-		output += "static ";
+		// output += "static ";
 	}
 
 	if (isArray)
@@ -142,7 +142,7 @@ std::string Declaration::GetExternalDeclarationStr() const
 
 	if (IsStatic())
 	{
-		output += "static ";
+		//output += "static ";
 	}
 
 	if (arrayItemCntStr != "" && (IsStatic() || forceArrayCnt))
