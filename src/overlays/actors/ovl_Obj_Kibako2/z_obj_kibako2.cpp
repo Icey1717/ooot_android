@@ -145,7 +145,7 @@ void ObjKibako2_Init(Actor* thisx, GlobalContext* globalCtx)
 	pthis->actionFunc = ObjKibako2_Idle;
 	pthis->dyna.actor.home.rot.z = pthis->dyna.actor.world.rot.z = pthis->dyna.actor.shape.rot.z = pthis->dyna.actor.world.rot.x = pthis->dyna.actor.shape.rot.x = 0;
 	// "Wooden box (stationary)"
-	osSyncPrintf("木箱(据置)(arg %04xH)(item %04xH %d)\n", pthis->dyna.actor.params, pthis->collectibleFlag, (int)pthis->dyna.actor.home.rot.x);
+	osSyncPrintf("木箱(据置)(arg %04xH)(item %04xH %d)\n", pthis->dyna.actor.params, pthis->collectibleFlag, (s32)pthis->dyna.actor.home.rot.x);
 }
 
 void ObjKibako2_Destroy(Actor* thisx, GlobalContext* globalCtx)

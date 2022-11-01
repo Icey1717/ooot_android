@@ -4484,7 +4484,7 @@ void Interface_Draw(GlobalContext* globalCtx)
 							break;
 						case 3:
 						case 9:
-							osSyncPrintf("event_xp[1]=%d,  event_yp[1]=%d  TOTAL_EVENT_TM=%d\n", svar5 = gSaveContext.timerX[1], svar2 = gSaveContext.timerY[1], (int)gSaveContext.timer2Value);
+							osSyncPrintf("event_xp[1]=%d,  event_yp[1]=%d  TOTAL_EVENT_TM=%d\n", svar5 = gSaveContext.timerX[1], svar2 = gSaveContext.timerY[1], (s32)gSaveContext.timer2Value);
 							svar1 = (gSaveContext.timerX[1] - 26) / gTimer_8015FFE6;
 							gSaveContext.timerX[1] -= svar1;
 							if(gSaveContext.healthCapacity > 0xA0)
@@ -4544,7 +4544,7 @@ void Interface_Draw(GlobalContext* globalCtx)
 									if(gSaveContext.timer2State == 4)
 									{
 										gSaveContext.timer2Value--;
-										osSyncPrintf("TOTAL_EVENT_TM=%d\n", (int)gSaveContext.timer2Value);
+										osSyncPrintf("TOTAL_EVENT_TM=%d\n", (s32)gSaveContext.timer2Value);
 
 										if(gSaveContext.timer2Value <= 0)
 										{

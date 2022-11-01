@@ -107,7 +107,7 @@ void EnHeishi1_Init(Actor* thisx, GlobalContext* globalCtx)
 	osSyncPrintf(VT_FGCOL(PURPLE) " (頭)反転アングルスピード加算値 %f\n" VT_RST, pthis->headTurnSpeedScale);
 	// "(head) maximum turning angle speed"
 	osSyncPrintf(VT_FGCOL(PURPLE) " (頭)反転アングルスピード最大☆ %f\n" VT_RST, pthis->headTurnSpeedMax);
-	osSyncPrintf(VT_FGCOL(GREEN) " 今時間 %d\n" VT_RST, ((void)0, (int)gSaveContext.dayTime)); // "current time"
+	osSyncPrintf(VT_FGCOL(GREEN) " 今時間 %d\n" VT_RST, ((void)0, (s32)gSaveContext.dayTime)); // "current time"
 	osSyncPrintf(VT_FGCOL(YELLOW) " チェック時間 %d\n" VT_RST, 0xBAAA);		      // "check time"
 	osSyncPrintf("\n\n");
 
@@ -211,7 +211,7 @@ void EnHeishi1_Walk(EnHeishi1* pthis, GlobalContext* globalCtx)
 			osSyncPrintf(VT_FGCOL(RED) " 種類  %d\n" VT_RST, pthis->path);
 			osSyncPrintf(VT_FGCOL(RED) " ぱす  %d\n" VT_RST, pthis->waypoint);
 			osSyncPrintf(VT_FGCOL(RED) " 反転  %d\n" VT_RST, pthis->bodyTurnSpeed);
-			osSyncPrintf(VT_FGCOL(RED) " 時間  %d\n" VT_RST, (int)pthis->waypointTimer);
+			osSyncPrintf(VT_FGCOL(RED) " 時間  %d\n" VT_RST, (s32)pthis->waypointTimer);
 			osSyncPrintf(VT_FGCOL(RED) " 点座  %d\n" VT_RST, path->count);
 			osSyncPrintf("\n\n");
 		}
@@ -352,7 +352,7 @@ void EnHeishi1_Wait(EnHeishi1* pthis, GlobalContext* globalCtx)
 			osSyncPrintf(VT_FGCOL(GREEN) " 種類  %d\n" VT_RST, pthis->path);
 			osSyncPrintf(VT_FGCOL(GREEN) " ぱす  %d\n" VT_RST, pthis->waypoint);
 			osSyncPrintf(VT_FGCOL(GREEN) " 反転  %d\n" VT_RST, pthis->bodyTurnSpeed);
-			osSyncPrintf(VT_FGCOL(GREEN) " 時間  %d\n" VT_RST, (int)pthis->waypointTimer);
+			osSyncPrintf(VT_FGCOL(GREEN) " 時間  %d\n" VT_RST, (s32)pthis->waypointTimer);
 			osSyncPrintf("\n\n");
 		}
 	}

@@ -647,7 +647,7 @@ void EnGoroiwa_Init(Actor* thisx, GlobalContext* globalCtx)
 	EnGoroiwa_FaceNextWaypoint(pthis, globalCtx);
 	EnGoroiwa_SetupRoll(pthis);
 	// "(Goroiwa)"
-	osSyncPrintf("(ごろ岩)(arg 0x%04x)(rail %d)(end %d)(bgc %d)(hit %d)\n", pthis->actor.params, pthis->actor.params & 0xFF, (pthis->actor.params >> 8) & 3, (pthis->actor.params >> 10) & 1, (int)pthis->actor.home.rot.z & 1);
+	osSyncPrintf("(ごろ岩)(arg 0x%04x)(rail %d)(end %d)(bgc %d)(hit %d)\n", pthis->actor.params, pthis->actor.params & 0xFF, (pthis->actor.params >> 8) & 3, (pthis->actor.params >> 10) & 1, (s32)pthis->actor.home.rot.z & 1);
 }
 
 void EnGoroiwa_Destroy(Actor* thisx, GlobalContext* globalCtx2)

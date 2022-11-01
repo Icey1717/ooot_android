@@ -5,7 +5,6 @@
     <buildrom>#BUILD_ROM#</buildrom>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
 	<IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include;../src;../assets/$(buildrom)/;../build;../;../external/include;%(IncludePath)</IncludePath>

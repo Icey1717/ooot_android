@@ -1003,7 +1003,7 @@ void Gameplay_Update(GlobalContext* globalCtx)
 
 				if(globalCtx->actorCtx.freezeFlashTimer && (globalCtx->actorCtx.freezeFlashTimer-- < 5))
 				{
-					osSyncPrintf("FINISH=%d\n", (int)globalCtx->actorCtx.freezeFlashTimer);
+					osSyncPrintf("FINISH=%d\n", (s32)globalCtx->actorCtx.freezeFlashTimer);
 					if((globalCtx->actorCtx.freezeFlashTimer > 0) && ((globalCtx->actorCtx.freezeFlashTimer % 2) != 0))
 					{
 						globalCtx->envCtx.fillScreen = true;

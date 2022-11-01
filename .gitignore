@@ -54,6 +54,7 @@ graphs/
 vs/Debug
 vs/Release
 vs/build
+OOT_Android\OOT.Packaging\ARM
 
 # Assets
 *.png

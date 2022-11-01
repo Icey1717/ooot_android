@@ -10,6 +10,16 @@
 
 [MattsCreative](http://www.youtube.com/channel/UCzoVL1aVjec7YKPeG59xKFg) has a great video tutorial on how to compile this project here: <https://youtu.be/swv1Tv-kjsU> and Compiling the dev branch to enable 30-120fps here https://www.youtube.com/watch?v=khiLvG3psPM
 
+## Android setup
+Currently building via Visual Studio 2022 is supported.
+Follow the steps below to setup your dev environment with the correct assets.
+Install the mobile developement tools via the visual studio installer.
+
+![Install image](vs_install_custom.PNG)
+
+Navigate to the 'vs' folder and open 'oot.sln'. Once open make sure the target configuration is Debug + ARM.
+Build the 'OOT.Packaging' target to generate a .APK that you can install to your device.
+
 ## FAQ
 
 [FAQ](https://github.com/blawar/ooot/wiki/FAQ)

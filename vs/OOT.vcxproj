@@ -836,12 +836,11 @@
     <ClCompile Include="..\src\port\controller\tas.cpp" />
     <ClCompile Include="..\src\port\controller\xcontroller.cpp" />
     <ClCompile Include="..\src\port\debug.cpp" />
-    <ClCompile Include="..\src\port\pc_main.cpp" />
-    <ClCompile Condition="'$(Platform)'!='ARM'" Include="..\src\port\PC\main.cpp" />
-    <ClCompile Condition="'$(Platform)'=='ARM'" Include="..\src\port\ARM\main.cpp" />
+    <ClCompile Include="..\src\port\main.cpp" />
     <ClCompile Include="..\src\port\mixer.cpp" />
     <ClCompile Include="..\src\port\nx.cpp" />
     <ClCompile Include="..\src\port\options.cpp" />
+    <ClCompile Include="..\src\port\pc_main.cpp" />
     <ClCompile Include="..\src\port\player\player.cpp" />
     <ClCompile Include="..\src\port\player\players.cpp" />
     <ClCompile Include="..\src\port\rsp.cpp" />

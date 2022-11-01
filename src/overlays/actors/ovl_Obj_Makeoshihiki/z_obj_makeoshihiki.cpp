@@ -66,7 +66,7 @@ void ObjMakeoshihiki_Init(Actor* thisx, GlobalContext* globalCtx)
 		((ObjOshihiki*)thisx->child)->cantMove = true;
 	}
 	thisx->world.rot.z = thisx->shape.rot.z = 0;
-	osSyncPrintf("(%s)(arg_data %04xF)(angleZ %d)\n", "../z_obj_makeoshihiki.c", thisx->params, (int)thisx->home.rot.z);
+	osSyncPrintf("(%s)(arg_data %04xF)(angleZ %d)\n", "../z_obj_makeoshihiki.c", thisx->params, (s32)thisx->home.rot.z);
 }
 
 void ObjMakeoshihiki_Draw(Actor* thisx, GlobalContext* globalCtx)

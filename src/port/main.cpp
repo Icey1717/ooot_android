@@ -16,6 +16,14 @@
 #include "def/sys_cfb.h"
 #include "def/z_debug.h"
 
+#ifdef OS_ANDROID
+#include "SDL2/SDL_system.h"
+#include <android/log.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
+
 // f32 qNaN0x3FFFFF;
 f32 qNaN0x10000;
 // f32 sNaN0x3FFFFF;
@@ -204,5 +212,40 @@ void bzero(void* __s, size_t __n)
 void bcopy(void* __s, void* __d, size_t __n)
 {
 	memmove(__d, __s, __n);
+}
+#endif
+
+#ifdef OS_ANDROID
+#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "AndroidProject1.NativeActivity", __VA_ARGS__))
+#define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "AndroidProject1.NativeActivity", __VA_ARGS__))
+
+
+extern "C"
+{
+	__attribute__((visibility("default"))) int SDL_main(int argc, char* argv[])
+	{
+		const char* szWorkingDirectory = SDL_AndroidGetInternalStoragePath();
+
+		int iDirResult = chdir(szWorkingDirectory);
+
+		if (iDirResult < 0)
+		{
+			iDirResult = mkdir(szWorkingDirectory, 0777);
+
+			if (iDirResult < 0)
+			{
+				return 1;
+			}
+
+			iDirResult = chdir(szWorkingDirectory);
+
+			if (iDirResult < 0)
+			{
+				return 1;
+			}
+		}
+
+		run();
+	}
 }
 #endif
