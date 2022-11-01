@@ -46,7 +46,10 @@
   </ItemDefinitionGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Platform)'=='ARM'">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <AndroidAPILevel>android-29</AndroidAPILevel>
+    <AndroidAPILevel >android-29</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Platform)'!='ARM'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ImportGroup Label="PropertySheets">
@@ -89,7 +92,7 @@
     <Link>
       <AdditionalLibraryDirectories Condition="'$(Platform)'=='Win32'">$(SolutionDir)..\AziAudi\3rd Party\directx\lib\x86</AdditionalLibraryDirectories>
       <AdditionalLibraryDirectories Condition="'$(Platform)'=='x64'">$(SolutionDir)..\AziAudi\3rd Party\directx\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'">dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">%(AdditionalOptions)</AdditionalOptions>
       <LibraryDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">aaudio;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>

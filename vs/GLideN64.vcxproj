@@ -111,7 +111,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <ExceptionHandling>Enabled</ExceptionHandling>
+      <ExceptionHandling Condition="'$(Platform)'=='ARM'">Enabled</ExceptionHandling>
+      <ExceptionHandling Condition="'$(Platform)'!='ARM'">Sync</ExceptionHandling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -337,20 +338,6 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\linux\windows_DisplayWindow.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Condition="'$(Platform)'=='Win32' or '$(Platform)'=='x64'" Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)'=='Debug_mupenplus' Or '$(Configuration)'=='Release_mupenplus'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">false</ExcludedFromBuild>

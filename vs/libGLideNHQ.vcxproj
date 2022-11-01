@@ -62,13 +62,18 @@
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>libGLideNHQ</TargetName>
+    <TargetName Condition="'$(Platform)'=='Win32' Or '$(Platform)'=='x64'">libGLideNHQ</TargetName>
     <OutDir>$(SolutionDir)..\external\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win32' Or '$(Platform)'=='x64'">
+    <TargetName Condition="'$(Configuration)'=='Debug'">libGLideNHQd</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir)..\GLideN64\src;$(ProjectDir)..\GLideN64\src\inc;$(ProjectDir)..\GLideN64\src\osal;$(ProjectDir)..\GLideN64\src\GLideNHQ\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
-      <ExceptionHandling>Enabled</ExceptionHandling>
+	  <ExceptionHandling Condition="'$(Platform)'=='ARM'">Enabled</ExceptionHandling>
+      <ExceptionHandling Condition="'$(Platform)'!='ARM'">Sync</ExceptionHandling>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
@@ -93,7 +98,8 @@
     <ClCompile>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <DebugInformationFormat>FullDebug</DebugInformationFormat>
+      <DebugInformationFormat Condition="'$(Platform)'=='ARM'">FullDebug</DebugInformationFormat>
+      <DebugInformationFormat Condition="'$(Platform)'!='ARM'">ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
