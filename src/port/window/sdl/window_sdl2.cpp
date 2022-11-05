@@ -19,6 +19,11 @@
 #include "port/controller/controllers.h"
 #include "port/controller/sdl.h"
 
+#ifdef WITH_IMGUI
+#include "imgui.h"
+#include "backends/imgui_impl_sdl.h"
+#endif
+
 void quit();
 void Set_Language(u8 language_id);
 #ifndef _WIN32
@@ -250,6 +255,10 @@ namespace platform::window
 			SDL_GLContext* context = (SDL_GLContext* )SDL_GL_CreateContext(wnd);
 			SDL_GL_MakeCurrent(wnd, context);
 			WindowsWGL_GrabWindow(wnd);
+
+#ifdef WITH_IMGUI
+			ImGui_ImplSDL2_InitForOpenGL(wnd, context);
+#endif
 #endif
 			/*if(oot::config().video().vsync())
 			{
@@ -387,6 +396,8 @@ namespace platform::window
 			SDL_Event event;
 			while(SDL_PollEvent(&event))
 			{
+				ImGui_ImplSDL2_ProcessEvent(&event);
+
 				switch(event.type)
 				{
 					case SDL_WINDOWEVENT:

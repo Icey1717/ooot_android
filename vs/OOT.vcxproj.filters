@@ -2172,10 +2172,10 @@
     <ClCompile Include="..\src\json.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\port\ARM\main.cpp">
+    <ClCompile Include="..\src\port\pc_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\port\pc_main.cpp">
+    <ClCompile Include="..\src\port\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2338,5 +2338,10 @@
     <Image Include="OOT.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OOT.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

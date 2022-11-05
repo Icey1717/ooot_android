@@ -14,3 +14,6 @@
 	path = GLideN64
 	url = https://github.com/Icey1717/GLideN64.git
 
+[submodule "imgui"]
+	path = imgui/imgui
+	url = https://github.com/ocornut/imgui.git

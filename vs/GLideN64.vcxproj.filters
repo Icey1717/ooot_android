@@ -419,34 +419,19 @@
     <ClCompile Include="..\GLideN64\src\uCodes\Turbo3D.cpp">
       <Filter>Source Files\uCodes</Filter>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\linux\CommonAPIImpl_linux.cpp">
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\windows\windows_DisplayWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\native\util\path.cpp">
+    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\native\util\StdString.cpp">
+    <ClCompile Include="..\GLideN64\src\windows\CommonAPIImpl_windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\linux\windows_DisplayWindow.cpp">
+    <ClCompile Include="..\GLideN64\src\windows\GLideN64_windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PublicApi\android_hardware_buffer_compat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PrivateApi\GraphicBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\PrivateApi\libhardware.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GraphicBuffer\GraphicBufferWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\opengl_ColorBufferReaderWithEGLImage.cpp">
+    <ClCompile Include="..\GLideN64\src\windows\MemoryStatus_windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -826,8 +811,11 @@
     <ClInclude Include="..\GLideN64\src\ZlutTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\linux\WindowsWGL.h">
+    <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\GLideN64\src\GLideN64.rc" />
   </ItemGroup>
 </Project>

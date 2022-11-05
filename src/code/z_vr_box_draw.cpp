@@ -9,7 +9,14 @@
 #include "def/z_rcp.h"
 #include "def/z_vr_box_draw.h"
 
+#ifdef WITH_IMGUI
+#include "imgui_commands.h"
+#include "imgui.h"
+#endif
+
 Mtx* sSkyboxDrawMatrix;
+
+bool bDebugSkipSkyboxDraw = false;
 
 Mtx* SkyboxDraw_UpdateMatrix(SkyboxContext* skyboxCtx, f32 x, f32 y, f32 z)
 {
@@ -23,6 +30,22 @@ Mtx* SkyboxDraw_UpdateMatrix(SkyboxContext* skyboxCtx, f32 x, f32 y, f32 z)
 
 void SkyboxDraw_Draw(SkyboxContext* skyboxCtx, GraphicsContext* gfxCtx, s16 skyboxId, s16 blend, f32 x, f32 y, f32 z)
 {
+#ifdef WITH_IMGUI
+	EnqueueImguiCommand([&] 
+		{
+			ImGui::Begin("Another Window", nullptr);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+			ImGui::Text("Hello from another window!");
+			if (ImGui::Button("Close Me"))
+				bDebugSkipSkyboxDraw = !bDebugSkipSkyboxDraw;
+			ImGui::End();
+		});
+#endif
+
+	if (bDebugSkipSkyboxDraw)
+	{
+		return;
+	}
+
 	OPEN_DISPS(gfxCtx, "../z_vr_box_draw.c", 52);
 
 	func_800945A0(gfxCtx);

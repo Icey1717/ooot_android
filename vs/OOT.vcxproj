@@ -103,6 +103,12 @@
     <TargetName>libmain</TargetName>
     <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>../imgui/imgui;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>../imgui/imgui;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
@@ -142,6 +148,22 @@
       <Command>(Robocopy $(SolutionDir)..\OOT_Android\OOT.Packaging\src $(SolutionDir)\$(Configuration)\$(Platform)\Package\src /MIR /NFL /NDL /NJH) &amp; IF %ERRORLEVEL% LSS 8 SET ERRORLEVEL = 0</Command>
       <Message>Mirror java src files</Message>
     </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalDependencies>imgui$(libExt);dsound$(libExt);opengl32$(libExt);freetype253MT$(libExt);SDL2-static$(libExt);winmm$(libExt);setupapi$(libExt);version$(libExt);imm32$(libExt);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>WITH_IMGUI;OS_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Link>
+      <AdditionalDependencies>imgui$(libExt);dsound$(libExt);opengl32$(libExt);freetype253MT$(libExt);SDL2-static$(libExt);winmm$(libExt);setupapi$(libExt);version$(libExt);imm32$(libExt);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>WITH_IMGUI;OS_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
