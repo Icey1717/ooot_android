@@ -395,7 +395,7 @@ namespace platform::window
 			SDL_Event event;
 			while(SDL_PollEvent(&event))
 			{
-#if defined(WITH_IMGUI) && !defined(_WIN32)
+#if defined(WITH_IMGUI)
 				ImGui_ImplSDL2_ProcessEvent(&event);
 #endif
 
