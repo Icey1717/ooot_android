@@ -37,6 +37,8 @@ out.txt
 *.tas
 *.bak
 *.dbg
+*.incremental
+*.FileListAbsolute.txt
 
 
 # Tool artifacts
