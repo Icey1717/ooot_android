@@ -20,8 +20,7 @@
 #include "port/controller/sdl.h"
 
 #ifdef WITH_IMGUI
-#include "imgui.h"
-#include "backends/imgui_impl_sdl.h"
+#include <GLideN64/src/Graphics/Imgui/OOT_Imgui.h>
 #endif
 
 void quit();
@@ -257,7 +256,7 @@ namespace platform::window
 			WindowsWGL_GrabWindow(wnd);
 
 #ifdef WITH_IMGUI
-			ImGui_ImplSDL2_InitForOpenGL(wnd, context);
+			OOT_Imgui::CreateImguiContext((void*)wnd, (void*)context);
 #endif
 #endif
 			/*if(oot::config().video().vsync())
@@ -396,7 +395,9 @@ namespace platform::window
 			SDL_Event event;
 			while(SDL_PollEvent(&event))
 			{
+#if defined(WITH_IMGUI) && !defined(_WIN32)
 				ImGui_ImplSDL2_ProcessEvent(&event);
+#endif
 
 				switch(event.type)
 				{

@@ -86,10 +86,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|Win32'">
-    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../include/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">
-    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;$(IncludePath)</IncludePath>
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;../include/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|Win32'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../FreeType2/freetype2-android/include;$(IncludePath)</IncludePath>
@@ -296,6 +296,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile Include="..\GLideN64\src\Graphics\ColorBufferReader.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\CombinerProgram.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\Context.cpp" />
+    <ClCompile Include="..\GLideN64\src\Graphics\Imgui\OOT_Imgui.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\ObjectHandle.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GLFunctions.cpp" />
     <ClCompile Include="..\GLideN64\src\Graphics\OpenGLContext\GLSL\glsl_CombinerInputs.cpp" />
@@ -363,6 +364,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClCompile Include="..\GLideN64\src\PostProcessor.cpp" />
     <ClCompile Include="..\GLideN64\src\RDP.CPP" />
     <ClCompile Include="..\GLideN64\src\GraphicsDrawer.cpp" />
+    <ClCompile Include="..\GLideN64\src\RenderingDebugHelpers.cpp" />
     <ClCompile Include="..\GLideN64\src\RSP.cpp" />
     <ClCompile Include="..\GLideN64\src\RSP_LoadMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Platform)'=='Win32'">true</ExcludedFromBuild>
@@ -458,6 +460,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClInclude Include="..\GLideN64\src\Graphics\Context.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\ContextImpl.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\FramebufferTextureFormats.h" />
+    <ClInclude Include="..\GLideN64\src\Graphics\Imgui\OOT_Imgui.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\ObjectHandle.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\GLFunctions.h" />
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\GLSL\glsl_CombinerInputs.h" />
@@ -522,6 +525,7 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
     <ClInclude Include="..\GLideN64\src\PostProcessor.h" />
     <ClInclude Include="..\GLideN64\src\RDP.h" />
     <ClInclude Include="..\GLideN64\src\GraphicsDrawer.h" />
+    <ClInclude Include="..\GLideN64\src\RenderingDebugHelpers.h" />
     <ClInclude Include="..\GLideN64\src\resource.h" />
     <ClInclude Include="..\GLideN64\src\RSP.h" />
     <ClInclude Include="..\GLideN64\src\SoftwareRender.h" />

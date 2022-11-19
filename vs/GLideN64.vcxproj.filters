@@ -81,6 +81,12 @@
     <Filter Include="Source Files\native\util">
       <UniqueIdentifier>{3fbbb3f7-f454-4682-8933-5ca84cb40d6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Imgui">
+      <UniqueIdentifier>{9ecb8d5d-c4c2-4f73-8865-a5c2fe62236f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Imgui">
+      <UniqueIdentifier>{e37bffdc-84c0-4bf9-a3ff-b3232db0d72d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\GLideN64\src\3DMath.cpp">
@@ -432,6 +438,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\GLideN64\src\windows\MemoryStatus_windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GLideN64\src\Graphics\Imgui\OOT_Imgui.cpp">
+      <Filter>Source Files\Graphics\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GLideN64\src\RenderingDebugHelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -813,6 +825,12 @@
     </ClInclude>
     <ClInclude Include="..\GLideN64\src\Graphics\OpenGLContext\windows\WindowsWGL.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GLideN64\src\RenderingDebugHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GLideN64\src\Graphics\Imgui\OOT_Imgui.h">
+      <Filter>Header Files\Graphics\Imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

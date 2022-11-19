@@ -418,12 +418,6 @@ void Graph_ThreadEntry(void* arg0)
 						Graph_Update(&gfxCtx, gCurrentGameState.get());
 						gfx_end_frame();
 						frameCount++;
-
-#ifdef WITH_IMGUI
-						EnqueueImguiCommand([] {
-							bool show_demo_window = true;
-							ImGui::ShowDemoWindow(&show_demo_window); });
-#endif
 					}
 				}
 				else

@@ -13,6 +13,13 @@
 #include "debugapi.h"
 #endif
 
+#ifdef WITH_IMGUI
+#include "imgui_commands.h"
+#endif
+#include <vector>
+
+#include <GLideN64/src/RenderingDebugHelpers.h>
+
 #define DROP_FRAME_LIMIT (m_refreshInterval)
 
 namespace platform::window
@@ -101,11 +108,55 @@ namespace platform::window
 		m_lastFrameTime = std::chrono::high_resolution_clock::now();
 		m_nextFrameTime += std::chrono::microseconds(1000 * 1000 / (m_targetFrameRate * oot::state.fastForward));
 
-		if(!dropped_frame)
+		if (!dropped_frame)
 		{
 			const auto now = std::chrono::high_resolution_clock::now();
 			m_lastFrameDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - m_currentFrameStartTime);
 			m_lastSwapDuration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - now);
+
+			std::chrono::duration<u64, std::milli> lastFrameDuration = std::chrono::duration_cast<std::chrono::milliseconds>(now - m_currentFrameStartTime);
+
+#ifdef WITH_IMGUI
+			OOT_Imgui_Commands::EnqueueImguiCommand([=] {
+				const unsigned int BUFFER_SIZE = 100;
+				static std::vector<u64> buffer;
+				if (buffer.capacity() < BUFFER_SIZE)
+				{
+					buffer.reserve(BUFFER_SIZE);
+				}
+
+				if (buffer.size() < BUFFER_SIZE)
+				{
+					buffer.push_back(lastFrameDuration.count());
+				}
+				else
+				{
+					static int newFrameIndex = 0;
+					buffer[newFrameIndex] = lastFrameDuration.count();
+					newFrameIndex = (newFrameIndex + 1) % BUFFER_SIZE;
+				}
+
+				u64 totalFrameTime = 0;
+				for (auto val : buffer)
+				{
+					totalFrameTime += val;
+				}
+
+				ImGui::Begin(OOT_Imgui_Commands::szRenderingToggleWindowName, nullptr);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+				if (ImGui::TreeNode("Frame stats"))
+				{
+					ImGui::Text("Last    frame time: %ums", (u32)lastFrameDuration.count());
+					ImGui::Text("Average frame time: %ums", (u32)(totalFrameTime / buffer.size()));
+					ImGui::Text("Last    frame rate: %u", (u32)(1.0f / (std::max<u64>(lastFrameDuration.count(), 1) / 1000.0f)));
+					ImGui::Text("Average frame rate: %u", (u32)(1.0f / (std::max<u64>(totalFrameTime / buffer.size(), 1) / 1000.0f)));
+
+					ImGui::Text("Last render time: %ums", (u32)RenderTiming::GetLastRenderMs());
+
+					ImGui::TreePop();
+				}
+				ImGui::End();
+			});
+#endif
 		}
 
 		return true;

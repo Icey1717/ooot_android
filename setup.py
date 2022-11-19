@@ -63,7 +63,7 @@ def main():
 	parser.add_argument("-co", "--clean-only", help="Cleans environment without asset extraction", action="store_true", default=False)
 	parser.add_argument("-b", "--buildRom", choices=validBuildOptions(), help="build rom config ex: EUR_MQD")
 	parser.add_argument("-f", "--framerate", choices=['20', '25', '30', '40', '60', '120', '240'], help="game framerate", default='20')
-	parser.add_argument("-m", "--enable-mouse", help="Enables mouse controls", action="store_true", default=True)
+	parser.add_argument("-m", "--enable-mouse", help="Enables mouse controls", action="store_true", default=False)
 	parser.add_argument("--refresh-configs", help="Refreshes rom config files (do not use)", action="store_true", default=False)
 	parser.add_argument("-o", "--organize-roms", help="Renames and moves roms to their proper location", action="store_true", default=False)
 	parser.add_argument("-s", "--skip-organize-roms", help="Skip organizing roms", action="store_true", default=False)

@@ -98,6 +98,7 @@
     <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
     <PackageDebugSymbols>true</PackageDebugSymbols>
     <TargetName>libmain</TargetName>
+    <IncludePath>../imgui/imgui;$(VC_IncludePath);$(WindowsSDK_IncludePath);../include;../src;../assets/$(buildrom)/;../build;../;../external/include;%(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetName>libmain</TargetName>
@@ -112,7 +113,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
-      <PreprocessorDefinitions>__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WITH_IMGUI;__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>Enabled</ExceptionHandling>
     </ClCompile>
@@ -120,7 +121,7 @@
     <Link>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\Debug\;..\external\ARM\Debug_mupenplus\</AdditionalLibraryDirectories>
       <AdditionalDependencies />
-      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>Imgui;PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <CustomBuildStep>
       <Command>

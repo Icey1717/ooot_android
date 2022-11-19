@@ -61,6 +61,7 @@
 #include "def/z_skin_matrix.h"
 #include "def/z_std_dma.h"
 #include "def/z_view.h"
+#include "imgui_commands.h"
 
 static CollisionPoly* sCurCeilingPoly;
 static s32 sCurCeilingBgId;
@@ -2785,8 +2786,13 @@ s32 Actor_IsInUncullZone(GlobalContext* globalCtx, Actor* actor, Vec3f* projecte
 	return false;
 }
 
+
 void Draw_Actors(GlobalContext* globalCtx, ActorContext* actorCtx)
 {
+#ifdef WITH_IMGUI
+	ADD_IMGUI_DRAW_TOGGLE(Actors);
+#endif
+
 	s32 invisibleActorCounter;
 	Actor* invisibleActors[INVISIBLE_ACTOR_MAX];
 	ActorListEntry* actorListEntry;

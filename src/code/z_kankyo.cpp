@@ -44,6 +44,7 @@
 #include "def/z_scene.h"
 #include "def/z_std_dma.h"
 #include "def/zbuffer.h"
+#include <imgui_commands.h>
 
 #ifdef ROM_FILE
 #undef ROM_FILE
@@ -1436,6 +1437,10 @@ void Environment_Update(GlobalContext* globalCtx, EnvironmentContext* envCtx, Li
 
 void Environment_DrawSunAndMoon(GlobalContext* globalCtx)
 {
+#ifdef WITH_IMGUI
+	ADD_IMGUI_DRAW_TOGGLE(SunAndMoon);
+#endif
+
 	f32 alpha;
 	f32 color;
 	f32 y;

@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\FreeType2\FreeType2.vcxproj" />
+    <ProjectReference Include="..\..\Imgui\Imgui.vcxproj" />
     <ProjectReference Include="..\..\PNG\PNG.vcxproj" />
     <ProjectReference Include="..\..\SDL2\SDL2.vcxproj" />
     <ProjectReference Include="..\..\vs\AziAudio.vcxproj" />

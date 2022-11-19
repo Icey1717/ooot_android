@@ -152,6 +152,7 @@ extern Gfx gEmptyDL[];
 #include "def/z_rcp.h"
 #include "def/z_scene_table.h"
 #include "def/z_view.h"
+#include "imgui_commands.h"
 
 #define ENTRANCE(scene, spawn, continueBgm, displayTitleCard, fadeIn, fadeOut)                                                                                                                                                                                 \
 	{                                                                                                                                                                                                                                                      \
@@ -2197,6 +2198,10 @@ void (*sSceneDrawHandlers[])(GlobalContext*) = {
 
 void Scene_Draw(GlobalContext* globalCtx)
 {
+#ifdef WITH_IMGUI
+	ADD_IMGUI_DRAW_TOGGLE(Scene);
+#endif
+
 	if(HREG(80) == 17)
 	{
 		if(HREG(95) != 17)

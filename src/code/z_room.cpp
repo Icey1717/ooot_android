@@ -31,6 +31,7 @@
 #include "def/z_skin_matrix.h"
 #include "def/z_std_dma.h"
 #include "def/zbuffer.h"
+#include "imgui_commands.h"
 
 void func_80095AB4(GlobalContext* globalCtx, Room* room, u32 flags);
 void func_80095D04(GlobalContext* globalCtx, Room* room, u32 flags);
@@ -675,6 +676,10 @@ s32 func_800973FC(GlobalContext* globalCtx, RoomContext* roomCtx)
 
 void Room_Draw(GlobalContext* globalCtx, Room* room, u32 flags)
 {
+#ifdef WITH_IMGUI
+	ADD_IMGUI_DRAW_TOGGLE(Room);
+#endif
+
 	if(room->segment != NULL)
 	{
 		gSegments[3] = (uintptr_t)VIRTUAL_TO_PHYSICAL(room->segment);
