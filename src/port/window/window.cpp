@@ -143,7 +143,7 @@ namespace platform::window
 				}
 
 				ImGui::Begin(OOT_Imgui_Commands::szRenderingToggleWindowName, nullptr);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-				if (ImGui::TreeNode("Frame stats"))
+				if (ImGui::TreeNodeEx("Frame stats", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					ImGui::Text("Last    frame time: %ums", (u32)lastFrameDuration.count());
 					ImGui::Text("Average frame time: %ums", (u32)(totalFrameTime / buffer.size()));

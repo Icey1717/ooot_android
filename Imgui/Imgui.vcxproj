@@ -40,6 +40,7 @@
     <ClCompile Include="imgui\backends\imgui_impl_sdlrenderer.cpp" />
     <ClCompile Include="imgui\backends\imgui_impl_win32.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -206,7 +207,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile />
     <Link>
-      <LibraryDependencies>m;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
       <AdditionalLibraryDirectories>..\external\ARM\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>

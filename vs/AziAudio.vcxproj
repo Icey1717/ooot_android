@@ -46,7 +46,7 @@
   </ItemDefinitionGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Platform)'=='ARM'">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <AndroidAPILevel >android-29</AndroidAPILevel>
+    <AndroidAPILevel>android-29</AndroidAPILevel>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Platform)'!='ARM'">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -88,6 +88,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalIncludeDirectories>$(SolutionDir)..\AziAudio\3rd Party\directx\include</AdditionalIncludeDirectories>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">-fno-omit-frame-pointer %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories Condition="'$(Platform)'=='Win32'">$(SolutionDir)..\AziAudi\3rd Party\directx\lib\x86</AdditionalLibraryDirectories>

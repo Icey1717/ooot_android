@@ -103,6 +103,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetName>libmain</TargetName>
     <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Package\Libs\$(TargetArchAbi)\</OutDir>
+    <IncludePath>../imgui/imgui;$(VC_IncludePath);$(WindowsSDK_IncludePath);../include;../src;../assets/$(buildrom)/;../build;../;../external/include;%(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>../imgui/imgui;$(IncludePath)</IncludePath>
@@ -114,7 +115,7 @@
     <ClCompile>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PreprocessorDefinitions>WITH_IMGUI;__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Wno-narrowing -fno-omit-frame-pointer %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>Enabled</ExceptionHandling>
     </ClCompile>
     <Link />
@@ -139,10 +140,11 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <AdditionalOptions>-Wno-narrowing %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>Enabled</ExceptionHandling>
+      <PreprocessorDefinitions>WITH_IMGUI;OS_ANDROID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\$(ToolchainName)\$(ToolchainFullVersionName)\$(PlatformShortName);$(StlLibraryPath);..\external\ARM\Release\;..\external\ARM\Release_mupenplus\</AdditionalLibraryDirectories>
-      <LibraryDependencies>PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);</LibraryDependencies>
+      <LibraryDependencies>Imgui;PNG;FreeType2;m;z;GLideN64$(libExt);AziAudio$(libExt);oot_assets$(libExt);GLideNHQ$(libExt);osal$(libExt);GLESv1_CM;GLESv2;GLESv3;EGL;SDL2;$(StlLibraryName);</LibraryDependencies>
       <AdditionalDependencies />
     </Link>
     <PostBuildEvent>

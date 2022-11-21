@@ -55,6 +55,7 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -95,7 +96,7 @@
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../FreeType2/freetype2-android/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">
-    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;$(IncludePath)</IncludePath>
+    <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;../SDL2/SDL/include;../include/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">
     <IncludePath>../GLideN64/src;../GLideN64/src/osal;../GLideN64/src/inc;../GLideN64/src/inc/freetype/include;$(IncludePath)</IncludePath>
@@ -137,7 +138,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release_mupenplus'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
+      <Optimization>Full</Optimization>
       <DebugInformationFormat>FullDebug</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PreprocessorDefinitions>__VEC4_OPT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -266,7 +267,11 @@ copy /Y "$(OutDir)$(TargetName).*" "$(Mupen64PluginsDir_x64)")</Command>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|x64'">Disabled</Optimization>
       <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">c++1z</CppLanguageStandard>
       <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_mupenplus|ARM'">c++1z</CppLanguageStandard>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">-fno-omit-frame-pointer %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <Lib>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug_mupenplus|ARM'">-fsanitize-recover=all %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\GLideN64\src\3DMath.cpp" />
